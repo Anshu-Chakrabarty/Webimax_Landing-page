@@ -1,0 +1,2506 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0071d8" />
+    <title>Reputation Management | Free Strategy Call</title>
+    <meta name="description" content="Repair, enhance, and protect your online reputation. Get a free strategy call and a 90-day improvement plan." />
+
+    <style>
+        /* =========================================================
+       THEME TOKENS (Light + Dark)
+       ========================================================= */
+        
+         :root {
+            --r12: 12px;
+            --r16: 16px;
+            --r20: 20px;
+            --r24: 24px;
+            --max: 1180px;
+            --ease: cubic-bezier(.2, .8, .2, 1);
+            --shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
+            --shadow2: 0 12px 30px rgba(0, 0, 0, 0.12);
+            /* motion */
+            --t-fast: .18s;
+            --t-med: .32s;
+            --t-slow: .65s;
+            /* =========================================================
+         GLOBAL SPACING SYSTEM
+         Control section rhythm + padding from one place
+         ========================================================= */
+            --container-pad: clamp(16px, 3.2vw, 40px);
+            --section-y: clamp(56px, 7vw, 96px);
+            --section-y-compact: clamp(44px, 6vw, 72px);
+            --head-gap: clamp(14px, 2vw, 22px);
+            --grid-gap: clamp(14px, 2vw, 18px);
+        }
+        
+        html[data-theme="light"] {
+            --page: radial-gradient(1000px 700px at 20% 10%, rgba(44, 193, 255, 0.22), transparent 60%), radial-gradient(900px 650px at 90% 20%, rgba(255, 122, 47, 0.14), transparent 55%), radial-gradient(900px 700px at 60% 90%, rgba(0, 113, 216, 0.18), transparent 60%), linear-gradient(180deg, #f6f9ff 0%, #eef6ff 50%, #ffffff 100%);
+            --text: #0e1526;
+            --muted: #5d6a83;
+            --surface: rgba(255, 255, 255, 0.82);
+            --surface-strong: rgba(255, 255, 255, 0.92);
+            --surface-soft: rgba(7, 31, 64, 0.04);
+            --border: rgba(10, 20, 40, 0.08);
+            --border-strong: rgba(10, 20, 40, 0.12);
+            --primary: #0071d8;
+            --secondary: #2cc1ff;
+            --support: #1980ea;
+            --accent: #ff7a2f;
+            --mint: #2fe3a1;
+            --heroA: #045ac0;
+            --heroB: #0d83ff;
+            --heroC: #2cc1ff;
+            --ctaA: #061b3a;
+            --ctaB: #083060;
+            --btnTextDark: #071a33;
+            --btnTextLight: #ffffff;
+        }
+        
+        html[data-theme="dark"] {
+            --page: radial-gradient(1000px 700px at 20% 10%, rgba(44, 193, 255, 0.14), transparent 60%), radial-gradient(900px 650px at 90% 20%, rgba(255, 122, 47, 0.10), transparent 55%), radial-gradient(900px 700px at 60% 90%, rgba(0, 113, 216, 0.12), transparent 60%), linear-gradient(180deg, #060d18 0%, #070f1f 55%, #050b14 100%);
+            --text: #eaf1ff;
+            --muted: #a8b6d8;
+            --surface: rgba(14, 22, 40, 0.72);
+            --surface-strong: rgba(14, 22, 40, 0.86);
+            --surface-soft: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.10);
+            --border-strong: rgba(255, 255, 255, 0.14);
+            --primary: #3aa2ff;
+            --secondary: #66d4ff;
+            --support: #4db0ff;
+            --accent: #ff8a44;
+            --mint: #43f2b2;
+            --heroA: #062a55;
+            --heroB: #0a4a93;
+            --heroC: #1f9bd0;
+            --ctaA: #040a13;
+            --ctaB: #071629;
+            --btnTextDark: #071a33;
+            --btnTextLight: #ffffff;
+        }
+        /* =========================================================
+       BASE
+       ========================================================= */
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            color: var(--text);
+            background: var(--page);
+            overflow-x: hidden;
+            transition: background var(--t-slow) var(--ease), color var(--t-med) var(--ease);
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: min(var(--max), calc(100% - (var(--container-pad) * 2)));
+            margin: 0 auto;
+        }
+        /* Skip link */
+        
+        .skip-link {
+            position: absolute;
+            top: -50px;
+            left: 12px;
+            background: var(--surface-strong);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 10px 12px;
+            border-radius: 12px;
+            z-index: 999;
+            transition: top var(--t-fast) var(--ease);
+        }
+        
+        .skip-link:focus {
+            top: 12px;
+            outline: none;
+            box-shadow: 0 0 0 4px color-mix(in srgb, var(--secondary) 20%, transparent);
+        }
+        /* =========================================================
+       BUTTONS + UI
+       ========================================================= */
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-radius: 999px;
+            padding: 12px 16px;
+            font-weight: 800;
+            letter-spacing: .2px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease), background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), filter var(--t-fast) var(--ease);
+            user-select: none;
+            white-space: nowrap;
+            will-change: transform;
+        }
+        
+        .btn:active {
+            transform: translateY(1px) scale(0.99);
+        }
+        
+        .btn-primary {
+            color: var(--btnTextDark);
+            background: linear-gradient(135deg, color-mix(in srgb, var(--secondary) 85%, white), white 70%);
+            border-color: color-mix(in srgb, white 30%, var(--border));
+            box-shadow: 0 12px 34px color-mix(in srgb, var(--secondary) 28%, transparent);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 18px 46px color-mix(in srgb, var(--secondary) 35%, transparent);
+        }
+        
+        .btn-accent {
+            color: var(--btnTextLight);
+            background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 55%, #ffd1a9));
+            box-shadow: 0 14px 40px color-mix(in srgb, var(--accent) 28%, transparent);
+        }
+        
+        .btn-accent:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 18px 50px color-mix(in srgb, var(--accent) 35%, transparent);
+        }
+        
+        .btn-ghost {
+            background: color-mix(in srgb, var(--surface) 60%, transparent);
+            border-color: color-mix(in srgb, var(--border) 90%, transparent);
+            color: var(--text);
+        }
+        
+        .btn-ghost:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.05);
+            border-color: var(--border-strong);
+        }
+        /* Magnetic hover for CTAs */
+        
+        .magnetic {
+            position: relative;
+        }
+        
+        .magnetic:hover {
+            transform: translateY(-1px);
+        }
+        /* =========================================================
+       TOPBAR
+       ========================================================= */
+        
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: var(--surface);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            transition: background var(--t-med) var(--ease), border-color var(--t-med) var(--ease);
+        }
+        
+        .topbar .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            gap: 14px;
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 220px;
+        }
+        
+        .brand .logo {
+            width: 140px;
+            height: auto;
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.08));
+        }
+        
+        .navhint {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            color: color-mix(in srgb, var(--text) 78%, transparent);
+        }
+        
+        .navhint b {
+            color: color-mix(in srgb, var(--text) 92%, transparent);
+        }
+        
+        .top-ctas {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        /* Theme toggle */
+        
+        .toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 999px;
+            background: color-mix(in srgb, var(--surface-strong) 65%, transparent);
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.10);
+            transition: transform var(--t-fast) var(--ease), background var(--t-med) var(--ease);
+        }
+        
+        .toggle:hover {
+            transform: translateY(-1px);
+        }
+        
+        .toggle .label {
+            font-size: 12px;
+            font-weight: 900;
+            color: color-mix(in srgb, var(--text) 88%, transparent);
+        }
+        
+        .switch {
+            width: 46px;
+            height: 26px;
+            border-radius: 999px;
+            background: color-mix(in srgb, var(--border) 70%, transparent);
+            border: 1px solid var(--border);
+            position: relative;
+            flex: 0 0 auto;
+            overflow: hidden;
+        }
+        
+        .knob {
+            width: 22px;
+            height: 22px;
+            border-radius: 999px;
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            background: linear-gradient(135deg, var(--secondary), white);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+            transition: transform var(--t-med) var(--ease);
+        }
+        
+        html[data-theme="dark"] .knob {
+            transform: translateX(20px);
+            background: linear-gradient(135deg, var(--accent), white);
+        }
+        /* =========================================================
+       HERO + ANIMATIONS
+       ========================================================= */
+        
+        .hero {
+            position: relative;
+            color: #fff;
+            padding: clamp(34px, 4vw, 46px) 0 clamp(18px, 2.6vw, 26px);
+            overflow: hidden;
+            background: radial-gradient(900px 650px at 20% 10%, rgba(44, 193, 255, 0.40), transparent 60%), radial-gradient(900px 650px at 90% 10%, rgba(255, 122, 47, 0.18), transparent 55%), linear-gradient(135deg, var(--heroA) 0%, var(--heroB) 45%, var(--heroC) 100%);
+            transition: background var(--t-slow) var(--ease);
+            isolation: isolate;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(115deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.08) 20%, rgba(255, 255, 255, 0.00) 40%, rgba(255, 255, 255, 0.06) 60%, rgba(255, 255, 255, 0.00) 80%);
+            mix-blend-mode: overlay;
+            transform: translateX(-25%);
+            animation: shimmer 10s var(--ease) infinite;
+            opacity: .6;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-35%);
+            }
+            50% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-35%);
+            }
+        }
+        
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: auto auto -220px -160px;
+            width: 620px;
+            height: 620px;
+            background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.18), transparent 60%), radial-gradient(circle at 65% 65%, rgba(44, 193, 255, 0.14), transparent 55%);
+            filter: blur(10px);
+            animation: float2 12s var(--ease) infinite;
+            opacity: .85;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .hero-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: var(--grid-gap);
+            align-items: stretch;
+            padding: clamp(20px, 3vw, 28px) 0 clamp(26px, 4vw, 42px);
+            z-index: 1;
+        }
+        
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(10px);
+            color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 26px rgba(0, 0, 0, 0.14);
+        }
+        
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: var(--mint);
+            box-shadow: 0 0 0 6px rgba(47, 227, 161, 0.18);
+        }
+        
+        .hero h1 {
+            font-size: clamp(34px, 4.4vw, 56px);
+            line-height: 1.02;
+            margin: 12px 0 12px;
+            letter-spacing: -0.6px;
+            text-shadow: 0 14px 30px rgba(0, 0, 0, 0.20);
+            position: relative;
+        }
+        
+        .hero h1 .shine {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.65));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% 100%;
+            animation: textShine 6s var(--ease) infinite;
+        }
+        
+        @keyframes textShine {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .hero p {
+            margin: 0 0 16px;
+            font-size: 16px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.92);
+            max-width: 55ch;
+        }
+        
+        .hero-bullets {
+            display: grid;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        
+        .bullet {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            backdrop-filter: blur(10px);
+            transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+        }
+        
+        .bullet:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        
+        .check {
+            width: 18px;
+            height: 18px;
+            border-radius: 6px;
+            background: rgba(47, 227, 161, 0.20);
+            border: 1px solid rgba(47, 227, 161, 0.35);
+            display: grid;
+            place-items: center;
+            flex: 0 0 auto;
+            margin-top: 2px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
+        }
+        
+        .check svg {
+            width: 12px;
+            height: 12px;
+        }
+        
+        .bullet b {
+            display: block;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.97);
+        }
+        
+        .bullet span {
+            display: block;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.82);
+            margin-top: 2px;
+        }
+        
+        @keyframes float2 {
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(-8deg) scale(1);
+            }
+            50% {
+                transform: translate(20px, -16px) rotate(-12deg) scale(1.04);
+            }
+        }
+        /* =========================================================
+       FORM CARD
+       ========================================================= */
+        
+        .form-card {
+            border-radius: var(--r24);
+            background: color-mix(in srgb, var(--surface-strong) 95%, white);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            padding: 18px;
+            align-self: start;
+            position: relative;
+            overflow: hidden;
+            transform-origin: top right;
+            transition: background var(--t-med) var(--ease), border-color var(--t-med) var(--ease);
+        }
+        
+        html[data-theme="dark"] .form-card {
+            background: color-mix(in srgb, var(--surface-strong) 92%, #0b1221);
+        }
+        
+        .form-card::before {
+            content: "";
+            position: absolute;
+            inset: -120px -120px auto auto;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--secondary) 26%, transparent), transparent 60%);
+            filter: blur(2px);
+            transform: rotate(20deg);
+            pointer-events: none;
+        }
+        
+        .form-top {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .form-top .title {
+            font-weight: 950;
+            letter-spacing: -0.3px;
+            color: color-mix(in srgb, var(--text) 92%, transparent);
+            font-size: 18px;
+            margin: 0;
+        }
+        
+        .form-top .meta {
+            font-size: 12px;
+            color: color-mix(in srgb, var(--muted) 92%, transparent);
+            margin-top: 4px;
+            font-weight: 700;
+        }
+        
+        .rating-chip {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 10px;
+            border-radius: 999px;
+            background: color-mix(in srgb, var(--primary) 10%, transparent);
+            border: 1px solid color-mix(in srgb, var(--primary) 18%, transparent);
+            color: color-mix(in srgb, var(--text) 80%, transparent);
+            font-size: 12px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+        
+        .stars {
+            display: flex;
+            gap: 2px;
+        }
+        
+        .star {
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, #ffb44c, var(--accent));
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 67% 57%, 79% 91%, 50% 70%, 21% 91%, 33% 57%, 2% 35%, 39% 35%);
+            filter: drop-shadow(0 6px 10px rgba(255, 122, 47, 0.18));
+        }
+        
+        form {
+            position: relative;
+            margin-top: 10px;
+        }
+        
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin: 10px 0;
+        }
+        
+        label {
+            font-size: 12px;
+            font-weight: 900;
+            color: color-mix(in srgb, var(--text) 92%, transparent);
+            letter-spacing: .2px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 14px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--border-strong);
+            background: color-mix(in srgb, var(--surface-strong) 96%, white);
+            outline: none;
+            font-size: 14px;
+            color: color-mix(in srgb, var(--text) 92%, transparent);
+            transition: border-color var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease), transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+        }
+        
+        html[data-theme="dark"] input {
+            background: color-mix(in srgb, var(--surface-strong) 92%, #0c1528);
+            border-color: var(--border);
+        }
+        
+        input:focus {
+            border-color: color-mix(in srgb, var(--secondary) 70%, white);
+            box-shadow: 0 0 0 5px color-mix(in srgb, var(--secondary) 22%, transparent);
+            transform: translateY(-1px);
+        }
+        
+        .error {
+            font-size: 12px;
+            color: #ff4d6d;
+            display: none;
+            font-weight: 800;
+            margin-top: 2px;
+        }
+        
+        .form-actions {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .primary-submit {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .primary-submit::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+            transform: translateX(-60%);
+            transition: transform .6s var(--ease);
+            pointer-events: none;
+        }
+        
+        .primary-submit:hover::after {
+            transform: translateX(60%);
+        }
+        
+        .microcopy {
+            font-size: 12px;
+            color: color-mix(in srgb, var(--muted) 92%, transparent);
+            line-height: 1.5;
+            font-weight: 650;
+        }
+        
+        .microcopy a {
+            text-decoration: underline;
+        }
+        
+        .trust-inline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed color-mix(in srgb, var(--border) 90%, transparent);
+        }
+        
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: var(--surface-soft);
+            border: 1px solid var(--border);
+            font-size: 12px;
+            color: color-mix(in srgb, var(--text) 90%, transparent);
+            font-weight: 900;
+            transition: transform var(--t-fast) var(--ease), filter var(--t-fast) var(--ease);
+        }
+        
+        .badge:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.04);
+        }
+        
+        .badge small {
+            display: block;
+            font-weight: 800;
+            color: color-mix(in srgb, var(--muted) 92%, transparent);
+            margin-top: 2px;
+        }
+        
+        .badge .icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 18%, transparent), color-mix(in srgb, var(--secondary) 10%, transparent));
+            border: 1px solid color-mix(in srgb, var(--primary) 14%, transparent);
+        }
+        
+        .badge svg {
+            width: 14px;
+            height: 14px;
+        }
+        /* =========================================================
+       PROOF STRIP
+       ========================================================= */
+        
+        .proof-strip {
+            background: var(--surface-strong);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: clamp(16px, 2.4vw, 20px) 0;
+            transition: background var(--t-med) var(--ease), border-color var(--t-med) var(--ease);
+        }
+        
+        .logos {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .logo-pill {
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: var(--surface-soft);
+            border: 1px solid var(--border);
+            color: color-mix(in srgb, var(--text) 92%, transparent);
+            font-weight: 950;
+            letter-spacing: .3px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform var(--t-fast) var(--ease);
+        }
+        
+        .logo-pill:hover {
+            transform: translateY(-2px);
+        }
+        
+        .logo-pill span {
+            opacity: .72;
+            font-weight: 850;
+            letter-spacing: 0;
+            color: color-mix(in srgb, var(--muted) 92%, transparent);
+        }
+        /* =========================================================
+       SECTIONS (consistent padding)
+       ========================================================= */
+        
+        section {
+            padding: var(--section-y) 0;
+        }
+        
+        section.compact {
+            padding: var(--section-y-compact) 0;
+        }
+        
+        .section-head {
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto var(--head-gap);
+        }
+        
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 950;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: color-mix(in srgb, var(--primary) 88%, transparent);
+            background: color-mix(in srgb, var(--primary) 10%, transparent);
+            border: 1px solid color-mix(in srgb, var(--primary) 14%, transparent);
+            padding: 8px 12px;
+            border-radius: 999px;
+        }
+        
+        .section-head h2 {
+            margin: 12px 0 8px;
+            font-size: clamp(26px, 3.2vw, 40px);
+            letter-spacing: -0.5px;
+            color: color-mix(in srgb, var(--text) 94%, transparent);
+        }
+        
+        .section-head p {
+            margin: 0;
+            color: color-mix(in srgb, var(--muted) 92%, transparent);
+            line-height: 1.65;
+            font-size: 15px;
+            font-weight: 650;
+        }
+        
+        .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--grid-gap);
+            margin-top: 18px;
+        }
+        
+        .card {
+            background: var(--surface-strong);
+            border: 1px solid var(--border);
+            border-radius: var(--r24);
+            box-shadow: var(--shadow2);
+            padding: 18px;
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease), background var(--t-med) var(--ease);
+        }
+        
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 46px rgba(0, 0, 0, 0.14);
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: -120px auto auto -120px;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--secondary) 18%, transparent), transparent 60%);
+            transform: rotate(12deg);
+            opacity: .95;
+            pointer-events: none;
+        }
+        
+        .card .ic {
+            width: 44px;
+            height: 44px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 18%, transparent), color-mix(in srgb, var(--secondary) 10%, transparent));
+            border: 1px solid color-mix(in srgb, var(--primary) 16%, transparent);
+            position: relative;
+            box-shadow: 0 12px 26px rgba(0, 113, 216, 0.10);
+            transition: transform var(--t-fast) var(--ease);
+        }
+        
+        .card:hover .ic {
+            transform: rotate(-2deg) scale(1.03);
+        }
+        
+        .card h3 {
+            position: relative;
+            margin: 12px 0 6px;
+            font-size: 18px;
+            color: color-mix(in srgb, var(--text) 94%, transparent);
+            letter-spacing: -0.2px;
+        }
+        
+        .card p {
+            position: relative;
+            margin: 0;
+            color: color-mix(in srgb, var(--muted) 92%, transparent);
+            line-height: 1.6;
+            font-size: 14px;
+            font-weight: 650;
+        }
+        
+        .card .mini {
+            position: relative;
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            font-size: 12px;
+            font-weight: 950;
+            padding: 8px 10px;
+            border-radius: 999px;
+            background: var(--surface-soft);
+            border: 1px solid var(--border);
+            color: color-mix(in srgb, var(--text) 90%, transparent);
+        }
+        /* =========================================================
+       HOW IT WORKS
+       ========================================================= */
+        
+        .how {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: var(--grid-gap);
+            align-items: stretch;
+            margin-top: 18px;
+        }
+        
+        .steps {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .step {
+            background: var(--surface-strong);
+            border: 1px solid var(--border);
+            border-radius: var(--r24);
+            box-shadow: var(--shadow2);
+            padding: 16px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--t-fast) var(--ease);
+        }
+        
+        .step:hover {
+            transform: translateY(-3px);
+        }
+        
+        .step::after {
+            content: "";
+            position: absolute;
+            inset: auto -160px -160px auto;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%);
+            transform: rotate(-10deg);
+            opacity: .9;
+            pointer-events: none;
+        }
+        
+        .num {
+            width: 38px;
+            height: 38px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-weight: 1000;
+            color: color-mix(in srgb, var(--text) 90%, transparent);
+            background: linear-gradient(135deg, color-mix(in srgb, var(--secondary) 30%, transparent), color-mix(in srgb, var(--surface-strong) 92%, white));
+            border: 1px solid color-mix(in srgb, var(--secondary) 22%, transparent);
+            box-shadow: 0 12px 26px color-mix(in srgb, var(--secondary) 14%, transparent);
+            position: relative;
+            flex: 0 0 auto;
+        }
+        
+        .step h4 {
+            margin: 2px 0 4px;
+            font-size: 15px;
+            color: color-mix(in srgb, var(--text) 94%, transparent);
+            position: relative;
+        }
+        
+        .step p {
+            margin: 0;
+            color: color-mix(in srgb, var(--muted) 92%, transparent);
+            line-height: 1.6;
+            font-size: 13.5px;
+            position: relative;
+            font-weight: 650;
+        }
+        
+        .side-panel {
+            border-radius: var(--r24);
+            background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 12%, transparent), color-mix(in srgb, var(--secondary) 9%, transparent));
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow2);
+            padding: 18px;
+            position: relative;
+            overflow: hidden;
+            transition: background var(--t-med) var(--ease);
+        }
+        
+        .side-panel::before {
+            content: "";
+            position: absolute;
+            inset: -140px -140px auto auto;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--primary) 20%, transparent), transparent 60%);
+            transform: rotate(22deg);
+            opacity: .9;
+            pointer-events: none;
+        }
+        
+        .side-panel h3 {
+            margin: 6px 0 6px;
+            color: color-mix(in srgb, var(--text) 94%, transparent);
+            letter-spacing: -0.2px;
+            position: relative;
+        }
+        
+        .side-panel p {
+            margin: 0;
+            color: color-mix(in srgb, var(--muted) 92%, transparent);
+            line-height: 1.65;
+            font-size: 14px;
+            position: relative;
+            font-weight: 650;
+        }
+        
+        .stats {
+            margin-top: 14px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            position: relative;
+        }
+        
+        .stat {
+            background: color-mix(in srgb, var(--surface-strong) 92%, white);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 12px;
+            text-align: center;
+            transition: transform var(--t-fast) var(--ease);
+        }
+        
+        html[data-theme="dark"] .stat {
+            background: color-mix(in srgb, var(--surface-strong) 92%, #0b1221);
+        }
+        
+        .stat:hover {
+            transform: translateY(-2px);
+        }
+        
+        .stat .big {
+            font-weight: 1000;
+            color: color-mix(in srgb, var(--text) 94%, transparent);
+            font-size: 18px;
+            letter-spacing: -0.2px;
+        }
+        
+        .stat .small {
+            margin-top: 4px;
+            font-size: 12px;
+            color: color-mix(in srgb, var(--muted) 92%, transparent);
+            font-weight: 850;
+        }
+        /* =========================================================
+       TESTIMONIALS
+       ========================================================= */
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--grid-gap);
+            margin-top: 18px;
+        }
+        
+        .quote {
+            background: var(--surface-strong);
+            border: 1px solid var(--border);
+            border-radius: var(--r24);
+            box-shadow: var(--shadow2);
+            padding: 18px;
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--t-med) var(--ease);
+        }
+        
+        .quote:hover {
+            transform: translateY(-4px);
+        }
+        
+        .quote::before {
+            content: "";
+            position: absolute;
+            inset: -140px auto auto -140px;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%);
+            pointer-events: none;
+        }
+        
+        .quote .top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            position: relative;
+        }
+        
+        .quote .name {
+            font-weight: 1000;
+            color: color-mix(in srgb, var(--text) 94%, transparent);
+            letter-spacing: -0.2px;
+            font-size: 14px;
+        }
+        
+        .quote .role {
+            font-size: 12px;
+            color: color-mix(in srgb, var(--muted) 92%, transparent);
+            font-weight: 850;
+            margin-top: 2px;
+        }
+        
+        .quote .text {
+            position: relative;
+            margin-top: 10px;
+            color: color-mix(in srgb, var(--muted) 92%, transparent);
+            line-height: 1.7;
+            font-size: 14px;
+            font-weight: 650;
+        }
+        
+        .quote .verified {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: color-mix(in srgb, var(--mint) 55%, var(--text));
+            font-weight: 950;
+            position: relative;
+        }
+        
+        .check2 {
+            width: 18px;
+            height: 18px;
+            border-radius: 7px;
+            display: grid;
+            place-items: center;
+            background: color-mix(in srgb, var(--mint) 18%, transparent);
+            border: 1px solid color-mix(in srgb, var(--mint) 28%, transparent);
+        }
+        
+        .check2 svg {
+            width: 12px;
+            height: 12px;
+        }
+        /* =========================================================
+       VIDEO PLACEHOLDERS
+       ========================================================= */
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--grid-gap);
+            margin-top: 18px;
+        }
+        
+        .video {
+            border-radius: var(--r24);
+            background: radial-gradient(900px 500px at 30% 30%, color-mix(in srgb, var(--secondary) 16%, transparent), transparent 60%), linear-gradient(135deg, color-mix(in srgb, var(--ctaA) 92%, black), color-mix(in srgb, var(--ctaB) 96%, black));
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.26);
+            padding: 18px;
+            min-height: 210px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            transition: transform var(--t-med) var(--ease);
+        }
+        
+        .video:hover {
+            transform: translateY(-5px);
+        }
+        
+        .video::before {
+            content: "";
+            position: absolute;
+            inset: -160px -140px auto auto;
+            width: 340px;
+            height: 340px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.16), transparent 60%);
+            transform: rotate(18deg);
+            opacity: .8;
+            pointer-events: none;
+        }
+        
+        .play {
+            width: 56px;
+            height: 56px;
+            border-radius: 22px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+            position: relative;
+            transition: transform var(--t-fast) var(--ease);
+        }
+        
+        .video:hover .play {
+            transform: scale(1.05);
+        }
+        
+        .play svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .video .label {
+            position: relative;
+            font-weight: 1000;
+            letter-spacing: -0.2px;
+            margin: 10px 0 0;
+        }
+        
+        .video .sub {
+            position: relative;
+            color: rgba(255, 255, 255, 0.78);
+            margin: 6px 0 0;
+            line-height: 1.5;
+            font-size: 13px;
+            max-width: 44ch;
+        }
+        
+        .video .note {
+            position: relative;
+            margin-top: 14px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.72);
+            font-weight: 850;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .pulse {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 0 0 rgba(255, 122, 47, 0.25);
+            animation: pulse 1.7s var(--ease) infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 122, 47, 0.25);
+            }
+            70% {
+                box-shadow: 0 0 0 12px rgba(255, 122, 47, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 122, 47, 0);
+            }
+        }
+        /* =========================================================
+       FAQ (chevron aligned, only one open via JS)
+       ========================================================= */
+        /* =========================================================
+   FAQ (FIXED)
+   - Prevent adjacent FAQ card from stretching when one opens
+   - Keep chevron perfectly centered
+   ========================================================= */
+        
+        .faq {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            /* keep consistent, avoids missing token */
+            margin-top: 18px;
+            /* ✅ KEY FIX: stop row-stretching that makes other cards look "open" */
+            align-items: start;
+        }
+        
+        .faq details {
+            background: var(--surface-strong);
+            border: 1px solid var(--border);
+            border-radius: var(--r24);
+            box-shadow: var(--shadow2);
+            padding: 14px 16px;
+            transition: transform var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease);
+            overflow: hidden;
+            /* ✅ keep each item only as tall as its content */
+            align-self: start;
+            height: fit-content;
+        }
+        
+        .faq details:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 44px rgba(0, 0, 0, 0.13);
+        }
+        
+        .faq summary {
+            list-style: none;
+            cursor: pointer;
+            font-weight: 1000;
+            color: color-mix(in srgb, var(--text) 94%, transparent);
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            padding-right: 56px;
+            /* space reserved for chevron */
+        }
+        
+        .faq summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        .faq .chev {
+            width: 34px;
+            height: 34px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: color-mix(in srgb, var(--primary) 10%, transparent);
+            border: 1px solid color-mix(in srgb, var(--primary) 14%, transparent);
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: color-mix(in srgb, var(--text) 85%, transparent);
+            transition: transform var(--t-fast) var(--ease);
+        }
+        
+        .faq .chev svg {
+            width: 16px;
+            height: 16px;
+            display: block;
+            /* helps perfect centering */
+        }
+        
+        .faq details[open] .chev {
+            transform: translateY(-50%) rotate(180deg);
+        }
+        
+        .faq details p {
+            margin: 10px 0 0;
+            color: color-mix(in srgb, var(--muted) 92%, transparent);
+            line-height: 1.7;
+            font-size: 14px;
+            font-weight: 650;
+        }
+        /* =========================================================
+       CTA BAND
+       ========================================================= */
+        
+        .cta-band {
+            background: radial-gradient(800px 520px at 20% 20%, color-mix(in srgb, var(--secondary) 24%, transparent), transparent 60%), radial-gradient(800px 520px at 90% 10%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 55%), linear-gradient(135deg, var(--ctaA), var(--ctaB));
+            color: #fff;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            transition: background var(--t-slow) var(--ease), border-color var(--t-med) var(--ease);
+        }
+        
+        .cta-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: clamp(26px, 3.8vw, 40px) 0;
+        }
+        
+        .cta-wrap h3 {
+            margin: 0;
+            font-size: clamp(20px, 2.3vw, 28px);
+            letter-spacing: -0.4px;
+        }
+        
+        .cta-wrap p {
+            margin: 6px 0 0;
+            color: rgba(255, 255, 255, 0.82);
+            line-height: 1.6;
+            max-width: 64ch;
+        }
+        
+        .cta-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        /* =========================================================
+       FOOTER (consistent spacing)
+       ========================================================= */
+        
+        .site-footer {
+            padding: var(--section-y) 0 clamp(34px, 5vw, 56px);
+            background: color-mix(in srgb, var(--ctaA) 88%, black);
+            border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+            color: color-mix(in srgb, #ffffff 72%, transparent);
+        }
+        
+        html[data-theme="light"] .site-footer {
+            background: #223140;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1.2fr .7fr;
+            gap: clamp(18px, 3vw, 28px);
+            align-items: start;
+        }
+        
+        .footer-logo {
+            width: 200px;
+            height: auto;
+            display: block;
+        }
+        
+        .footer-desc {
+            margin: 14px 0 16px;
+            max-width: 46ch;
+            line-height: 1.7;
+            font-size: 14px;
+            color: color-mix(in srgb, #ffffff 70%, transparent);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, .10);
+            border: 1px solid rgba(255, 255, 255, .14);
+            transition: transform var(--t-fast) var(--ease), filter var(--t-fast) var(--ease);
+            cursor: pointer;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+        
+        .social-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: #ffffff;
+            opacity: .92;
+        }
+        
+        .footer-pledge {
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .12);
+            padding: 22px 22px 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, .22);
+        }
+        
+        .footer-pledge::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: var(--accent);
+        }
+        
+        .pledge-title {
+            margin: 0 0 10px;
+            font-size: 22px;
+            letter-spacing: -0.2px;
+            color: var(--accent);
+            font-weight: 950;
+        }
+        
+        .pledge-quote {
+            margin: 0 0 14px;
+            font-style: italic;
+            line-height: 1.7;
+            font-size: 15px;
+            color: color-mix(in srgb, #ffffff 82%, transparent);
+        }
+        
+        .pledge-sign {
+            margin: 0;
+            font-size: 14px;
+            color: #ffffff;
+            font-weight: 900;
+        }
+        
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: flex-start;
+            padding-top: 10px;
+        }
+        
+        .footer-link,
+        .footer-btnlink {
+            color: color-mix(in srgb, #ffffff 78%, transparent);
+            font-size: 14px;
+            text-decoration: none;
+            transition: filter var(--t-fast) var(--ease);
+            background: transparent;
+            border: 0;
+            padding: 0;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        
+        .footer-link:hover,
+        .footer-btnlink:hover {
+            filter: brightness(1.12);
+            text-decoration: underline;
+        }
+        
+        .footer-link.phone {
+            font-weight: 900;
+            font-size: 16px;
+            letter-spacing: .2px;
+            color: color-mix(in srgb, #ffffff 88%, transparent);
+        }
+        
+        .footer-bottom {
+            margin-top: clamp(22px, 3vw, 36px);
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, .10);
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255, 255, 255, .55);
+        }
+        /* =========================================================
+       MOBILE STICKY BAR
+       ========================================================= */
+        
+        .mobile-bar {
+            position: fixed;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            background: var(--surface-strong);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
+            backdrop-filter: blur(14px);
+            padding: 10px;
+            display: none;
+            z-index: 80;
+            transition: background var(--t-med) var(--ease), border-color var(--t-med) var(--ease);
+        }
+        
+        .mobile-bar .inner {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .mobile-bar .left {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 0;
+        }
+        
+        .mobile-bar .left b {
+            font-size: 13px;
+            color: color-mix(in srgb, var(--text) 94%, transparent);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .mobile-bar .left span {
+            font-size: 12px;
+            color: color-mix(in srgb, var(--muted) 92%, transparent);
+            font-weight: 850;
+        }
+        
+        .mobile-bar .right {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .mobile-bar .btn {
+            padding: 11px 12px;
+            font-size: 13px;
+        }
+        
+        .btn svg {
+            width: 16px;
+            height: 16px;
+            flex: 0 0 auto;
+        }
+        /* =========================================================
+       REVEAL ANIMATIONS
+       ========================================================= */
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity var(--t-slow) var(--ease), transform var(--t-slow) var(--ease);
+        }
+        
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .floaty.in {
+            animation: floaty 6.5s var(--ease) infinite;
+        }
+        
+        @keyframes floaty {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-4px);
+            }
+        }
+        /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+        
+        @media (max-width: 980px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            .grid3 {
+                grid-template-columns: 1fr;
+            }
+            .how {
+                grid-template-columns: 1fr;
+            }
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            .faq {
+                grid-template-columns: 1fr;
+            }
+            .cta-wrap {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .brand {
+                min-width: unset;
+            }
+            .navhint {
+                display: none;
+            }
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 720px) {
+            .top-ctas .btn-ghost {
+                display: none;
+            }
+            .toggle .label {
+                display: none;
+            }
+            .mobile-bar {
+                display: block;
+            }
+            footer {
+                padding-bottom: 120px;
+            }
+        }
+        /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Sticky Header -->
+    <header class="topbar">
+        <div class="container">
+            <div class="wrap">
+                <a class="brand" href="#top" aria-label="WebiMax home">
+                    <img class="logo" src="WebiMax_Logo-Digital.jpg" alt="WebiMax logo" />
+                </a>
+
+                <div class="navhint" aria-hidden="true">
+                    <span>Free strategy call</span>
+                    <span>•</span>
+                    <b>Reply within 1 business day</b>
+                </div>
+
+                <div class="top-ctas">
+                    <button class="toggle" id="themeToggle" type="button" aria-label="Toggle light or dark mode">
+            <span class="label" id="themeLabel">Light</span>
+            <span class="switch" aria-hidden="true"><span class="knob"></span></span>
+          </button>
+
+                    <a class="btn btn-ghost" href="tel:+18568306359" aria-label="Call 856-830-6359">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M6.6 10.8c1.6 3.1 3.5 5 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3
+      1.2.4 2.5.6 3.9.6.6 0 1 .4 1 1V21c0 .6-.4 1-1 1C11.9 22 2 12.1 2 2
+      c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.4.2 2.7.6 3.9.1.4 0 .8-.3 1.1L6.6 10.8z"
+      fill="currentColor"></path>
+  </svg>
+                        <span>856-830-6359</span>
+                    </a>
+                    <a class="btn btn-accent magnetic" href="#lead-form" id="headerCTA">Get Free Strategy Call</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <main id="main">
+        <section id="top" class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="reveal">
+                        <span class="pill">
+              <span class="dot"></span>
+                        <strong>10,000+ reputations repaired</strong>
+                        <span style="opacity:.75;">&nbsp;•&nbsp; Trusted when stakes are high</span>
+                        </span>
+
+                        <h1><span class="shine">Control Your Online Reputation. Protect Your Brand.</span></h1>
+                        <p>
+                            Get a free strategy call to identify quick wins and build a practical 90-day plan to repair, enhance, and protect your online presence.
+                        </p>
+
+                        <div class="hero-bullets">
+                            <div class="bullet">
+                                <div class="check" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M20 7L10 17l-5-5" stroke="white" stroke-width="2.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                                </div>
+                                <div>
+                                    <b>Suppress harmful search results</b>
+                                    <span>Promote positive content so Page 1 reflects your brand.</span>
+                                </div>
+                            </div>
+
+                            <div class="bullet">
+                                <div class="check" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M20 7L10 17l-5-5" stroke="white" stroke-width="2.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                                </div>
+                                <div>
+                                    <b>Grow 5-star reviews consistently</b>
+                                    <span>Systems and outreach that increase high-quality review volume.</span>
+                                </div>
+                            </div>
+
+                            <div class="bullet">
+                                <div class="check" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M20 7L10 17l-5-5" stroke="white" stroke-width="2.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                                </div>
+                                <div>
+                                    <b>24/7 monitoring + rapid response</b>
+                                    <span>Spot issues early, protect trust, and reduce damage.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lead Form -->
+                    <aside class="form-card reveal" aria-label="Lead capture form">
+                        <div class="form-top">
+                            <div>
+                                <p class="title">Get Your Free Strategy Call</p>
+                                <div class="meta">No spam. Response within 1 business day.</div>
+                            </div>
+
+                            <div class="rating-chip" title="Customer rating">
+                                <div class="stars" aria-hidden="true">
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                </div>
+                                <span>4.8/5</span>
+                            </div>
+                        </div>
+
+                        <form id="lead-form" novalidate>
+                            <div class="field">
+                                <label for="name">Full Name</label>
+                                <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required aria-describedby="err-name" />
+                                <div class="error" id="err-name" data-for="name" role="alert" aria-live="polite">Please enter your name.</div>
+                            </div>
+
+                            <div class="field">
+                                <label for="email">Work Email</label>
+                                <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@company.com" required aria-describedby="err-email" />
+                                <div class="error" id="err-email" data-for="email" role="alert" aria-live="polite">Please enter a valid email.</div>
+                            </div>
+
+                            <div class="field">
+                                <label for="phone">Phone</label>
+                                <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(555) 555-5555" required aria-describedby="err-phone" />
+                                <div class="error" id="err-phone" data-for="phone" role="alert" aria-live="polite">Please enter a valid phone number.</div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button class="btn btn-accent primary-submit" type="submit" id="submitBtn">
+                  Get My Free Strategy Call
+                  <span aria-hidden="true">→</span>
+                </button>
+
+                                <div class="microcopy">
+                                    By submitting, you agree we may contact you by phone/SMS/email about your request. Message/data rates may apply. You can opt out anytime.
+                                    <a href="#privacy">Privacy</a>.
+                                </div>
+
+                                <div class="trust-inline" aria-label="Trust badges">
+                                    <div class="badge">
+                                        <div class="icon" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 2l8 4v6c0 5-3 9-8 10C7 21 4 17 4 12V6l8-4z" stroke="currentColor"
+                          stroke-width="2" />
+                      </svg>
+                                        </div>
+                                        BBB Accredited
+                                        <small>Trust signal</small>
+                                    </div>
+
+                                    <div class="badge">
+                                        <div class="icon" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 12a8 8 0 1016 0 8 8 0 10-16 0z" stroke="currentColor" stroke-width="2" />
+                        <path d="M7 12h10" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        <path d="M12 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                      </svg>
+                                        </div>
+                                        U.S.-Based Team
+                                        <small>Mon–Fri</small>
+                                    </div>
+
+                                    <div class="badge">
+                                        <div class="icon" aria-hidden="true">
+                                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </svg>
+                                        </div>
+                                        100% Confidential
+                                        <small>NDA available</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social proof strip -->
+        <div class="proof-strip">
+            <div class="container">
+                <div class="logos reveal floaty" aria-label="Trusted by">
+                    <div class="logo-pill">US News <span>featured</span></div>
+                    <div class="logo-pill">Clutch <span>top reviews</span></div>
+                    <div class="logo-pill">Newsweek <span>mentioned</span></div>
+                    <div class="logo-pill">UpCity <span>partner</span></div>
+                    <div class="logo-pill">Trusted by <span>5,000+ brands</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefits -->
+        <section>
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="kicker">Repair • Enhance • Protect</span>
+                    <h2>Reputation support that makes sense for real businesses</h2>
+                    <p>
+                        Clear actions, measurable outcomes, and a plan that fits your brand. We focus on improving what people see first, because that’s what drives calls, bookings, and sales.
+                    </p>
+                </div>
+
+                <div class="grid3">
+                    <article class="card reveal">
+                        <div class="ic" aria-hidden="true">🧹</div>
+                        <h3>Repair</h3>
+                        <p>Reduce the visibility of negative results by strengthening what ranks and what people trust.</p>
+                        <div class="mini">
+                            <span class="tag">Search result cleanup</span>
+                            <span class="tag">Review strategy</span>
+                        </div>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="ic" aria-hidden="true">✨</div>
+                        <h3>Enhance</h3>
+                        <p>Build authority with positive content, PR placements, and a consistent review generation system.</p>
+                        <div class="mini">
+                            <span class="tag">PR + content</span>
+                            <span class="tag">5-star growth</span>
+                        </div>
+                    </article>
+
+                    <article class="card reveal">
+                        <div class="ic" aria-hidden="true">🛡️</div>
+                        <h3>Protect</h3>
+                        <p>Always-on monitoring to detect issues early and respond fast before they spread.</p>
+                        <div class="mini">
+                            <span class="tag">Monitoring</span>
+                            <span class="tag">Rapid response</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it works -->
+        <section>
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="kicker">How it works</span>
+                    <h2>A simple process that delivers results</h2>
+                    <p>Built for Google Ads traffic: quick clarity, immediate trust, and an easy next step.</p>
+                </div>
+
+                <div class="how">
+                    <div class="steps">
+                        <div class="step reveal">
+                            <div class="num">1</div>
+                            <div>
+                                <h4>Analyze what’s hurting trust</h4>
+                                <p>We review branded search results, review profiles, and key mentions to find high-impact fixes.</p>
+                            </div>
+                        </div>
+                        <div class="step reveal">
+                            <div class="num">2</div>
+                            <div>
+                                <h4>Improve what customers see first</h4>
+                                <p>We publish and promote the right content, guide reviews, and strengthen your brand footprint.</p>
+                            </div>
+                        </div>
+                        <div class="step reveal">
+                            <div class="num">3</div>
+                            <div>
+                                <h4>Monitor and protect going forward</h4>
+                                <p>Ongoing tracking to catch negative mentions early and protect your business reputation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="side-panel reveal">
+                        <h3>What you get on the strategy call</h3>
+                        <p>
+                            A straightforward plan with quick wins, a realistic timeline, and priority actions for the next 90 days. No fluff, just a clear path forward.
+                        </p>
+
+                        <div class="stats" aria-label="Stats">
+                            <div class="stat">
+                                <div class="big" data-count="90">0</div>
+                                <div class="small">Day plan</div>
+                            </div>
+                            <div class="stat">
+                                <div class="big" data-count="1">0</div>
+                                <div class="small">Business day reply</div>
+                            </div>
+                            <div class="stat">
+                                <div class="big" data-count="24">0</div>
+                                <div class="small">Monitoring</div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top:14px;">
+                            <a class="btn btn-primary magnetic" href="#lead-form">Request My Call</a>
+                            <a class="btn" style="margin-left:8px; background:var(--surface-soft); border:1px solid var(--border);" href="tel:+18568306359">
+                Call Now
+              </a>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section>
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="kicker">Results delivered</span>
+                    <h2>Trusted by teams that care about reputation</h2>
+                    <p>Short quotes near decision points help reduce hesitation and boost conversions.</p>
+                </div>
+
+                <div class="test-grid">
+                    <div class="quote reveal">
+                        <div class="top">
+                            <div>
+                                <div class="name">“Moves quickly, quality stays high.”</div>
+                                <div class="role">President, Production Company</div>
+                            </div>
+                            <div class="stars" aria-hidden="true">
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                            </div>
+                        </div>
+                        <div class="text">We saw clear progress fast and the communication was excellent throughout.</div>
+                        <div class="verified">
+                            <span class="check2" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span> Verified review
+                        </div>
+                    </div>
+
+                    <div class="quote reveal">
+                        <div class="top">
+                            <div>
+                                <div class="name">“Clear plan and easy to work with.”</div>
+                                <div class="role">Director of Marketing, Retail</div>
+                            </div>
+                            <div class="stars" aria-hidden="true">
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                            </div>
+                        </div>
+                        <div class="text">They explained the steps, set expectations, and executed without surprises.</div>
+                        <div class="verified">
+                            <span class="check2" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span> Verified review
+                        </div>
+                    </div>
+
+                    <div class="quote reveal">
+                        <div class="top">
+                            <div>
+                                <div class="name">“Helped us protect our brand.”</div>
+                                <div class="role">Founder, Services Business</div>
+                            </div>
+                            <div class="stars" aria-hidden="true">
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                                <div class="star"></div>
+                            </div>
+                        </div>
+                        <div class="text">Monitoring and support gave us peace of mind. Problems got handled quickly.</div>
+                        <div class="verified">
+                            <span class="check2" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span> Verified review
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video placeholders -->
+        <section>
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="kicker">Video testimonials</span>
+                    <h2>Proof you can see (videos coming soon)</h2>
+                    <p>For now these are placeholders. Later, replace each card with your embedded video.</p>
+                </div>
+
+                <div class="video-grid">
+                    <div class="video reveal" role="group" aria-label="Video testimonial placeholder 1">
+                        <div class="play" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9 7l10 5-10 5V7z" fill="white" />
+              </svg>
+                        </div>
+                        <div>
+                            <div class="label">Client Story #1</div>
+                            <p class="sub">Placeholder for a short client video about results and experience.</p>
+                            <div class="note"><span class="pulse"></span> Add video embed later</div>
+                        </div>
+                    </div>
+
+                    <div class="video reveal" role="group" aria-label="Video testimonial placeholder 2">
+                        <div class="play" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9 7l10 5-10 5V7z" fill="white" />
+              </svg>
+                        </div>
+                        <div>
+                            <div class="label">Client Story #2</div>
+                            <p class="sub">Placeholder for a short testimonial covering speed, clarity, and trust.</p>
+                            <div class="note"><span class="pulse"></span> Add video embed later</div>
+                        </div>
+                    </div>
+
+                    <div class="video reveal" role="group" aria-label="Video testimonial placeholder 3">
+                        <div class="play" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9 7l10 5-10 5V7z" fill="white" />
+              </svg>
+                        </div>
+                        <div>
+                            <div class="label">Client Story #3</div>
+                            <p class="sub">Placeholder for a short video about protecting brand presence long-term.</p>
+                            <div class="note"><span class="pulse"></span> Add video embed later</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section>
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="kicker">FAQ</span>
+                    <h2>Quick answers before you reach out</h2>
+                    <p>This reduces objections and improves conversion rates from cold ad traffic.</p>
+                </div>
+
+                <div class="faq" id="faq">
+                    <details class="reveal">
+                        <summary>How fast does reputation work show results? <span class="chev" aria-hidden="true">
+  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+    <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+</span></summary>
+                        <p>Timelines vary based on your search results and review profiles, but we typically start with quick wins first, then build momentum with content and ongoing monitoring.</p>
+                    </details>
+
+                    <details class="reveal">
+                        <summary>Do you remove reviews? <span class="chev" aria-hidden="true">
+  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+    <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+</span></summary>
+                        <p>We focus on compliant, ethical strategies. If a review violates platform policies, we can guide you through the dispute process. Otherwise, we improve what ranks and what prospects see first.</p>
+                    </details>
+
+                    <details class="reveal">
+                        <summary>What does the free strategy call include? <span class="chev" aria-hidden="true">
+  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+    <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+</span></summary>
+                        <p>You’ll get a clear 90-day action plan outline, prioritized steps, and recommendations tailored to your brand presence and goals.</p>
+                    </details>
+
+                    <details class="reveal">
+                        <summary>How is pricing structured? <span class="chev" aria-hidden="true">
+  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+    <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+</span></summary>
+                        <p>Pricing depends on scope and urgency. After reviewing your situation, we’ll recommend the right level of support and outline options clearly.</p>
+                    </details>
+
+                    <details class="reveal">
+                        <summary>Is this confidential? <span class="chev" aria-hidden="true">
+  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+    <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+</span></summary>
+                        <p>Yes. We can work under NDA and keep discussions discreet. We also avoid publishing anything that compromises privacy.</p>
+                    </details>
+
+                    <details class="reveal">
+                        <summary>Can I just call instead of filling the form? <span class="chev" aria-hidden="true">
+  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+    <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+</span></summary>
+                        <p>Absolutely. Tap to call anytime during business hours. If you leave a voicemail, we’ll get back to you within 1 business day.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA band -->
+        <section class="cta-band compact">
+            <div class="container">
+                <div class="cta-wrap">
+                    <div class="reveal">
+                        <h3>Ready for a clean, positive reputation on Page 1?</h3>
+                        <p>Request your free strategy call and we’ll outline quick wins and next steps. Simple, direct, and actionable.
+                        </p>
+                    </div>
+                    <div class="cta-actions reveal">
+                        <a class="btn btn-accent magnetic" href="#lead-form">Get Free Strategy Call</a>
+                        <a class="btn btn-ghost magnetic" href="tel:+18568306359">Call 856-830-6359</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="privacy" aria-label="Footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- LEFT -->
+                <div class="footer-left">
+                    <a href="#top" class="footer-brand" aria-label="Back to top">
+                        <img src="WebiMax_Logo-Digital.jpg" alt="WebiMax logo" class="footer-logo" />
+                    </a>
+
+                    <p class="footer-desc">
+                        WebiMax is a pioneer in digital reputation management, helping over 10,000 clients secure their brand integrity since 2008.
+                    </p>
+
+                    <div class="footer-social" aria-label="Social links">
+                        <button class="social-btn" type="button" aria-label="Open LinkedIn (placeholder)" onclick="alert('Add your LinkedIn URL here')">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5ZM.5 8.5h4V23h-4V8.5ZM8.5 8.5h3.8v2h.05c.53-1 1.82-2.05 3.75-2.05 4 0 4.74 2.63 4.74 6.05V23h-4v-6.65c0-1.59-.03-3.64-2.22-3.64-2.22 0-2.56 1.73-2.56 3.52V23h-4V8.5Z" />
+              </svg>
+            </button>
+
+                        <button class="social-btn" type="button" aria-label="Open Facebook (placeholder)" onclick="alert('Add your Facebook URL here')">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M13.5 22v-8h2.7l.4-3H13.5V9.1c0-.9.3-1.6 1.7-1.6h1.5V5c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6V11H7v3h2.5v8h4Z" />
+              </svg>
+            </button>
+                    </div>
+                </div>
+
+                <!-- CENTER -->
+                <div class="footer-pledge" aria-label="Founder pledge">
+                    <h3 class="pledge-title">Founder’s Pledge</h3>
+                    <p class="pledge-quote">
+                        “I will always make myself available to you. To facilitate this, I provide all clients with my personal cell phone number.”
+                    </p>
+                    <p class="pledge-sign">– Ken Wisnefski, Founder</p>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="footer-right" aria-label="Contact and policies">
+                    <a class="footer-link phone" href="tel:+18568306359" aria-label="Call 856-830-6359">
+            856-830-6359
+          </a>
+
+                    <button class="footer-btnlink" type="button" aria-label="Open Privacy Policy (placeholder)" onclick="alert('Add your Privacy Policy URL here')">Privacy Policy</button>
+                    <button class="footer-btnlink" type="button" aria-label="Open Terms of Service (placeholder)" onclick="alert('Add your Terms URL here')">Terms of Service</button>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                © <span id="year"></span> WebiMax LLC. Confidential prepared for official Webimax campaign.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile sticky CTA bar -->
+    <div class="mobile-bar" role="region" aria-label="Quick actions">
+        <div class="inner">
+            <div class="left">
+                <b>Free Strategy Call</b>
+                <span>Reply within 1 business day</span>
+            </div>
+            <div class="right">
+                <a class="btn btn-ghost magnetic" href="tel:+18568306359">Call</a>
+                <a class="btn btn-accent magnetic" href="#lead-form">Request Call</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* =========================================================
+                                                                                       THEME (Light/Dark) with persistence
+                                                                                       ========================================================= */
+        const root = document.documentElement;
+        const toggleBtn = document.getElementById('themeToggle');
+        const label = document.getElementById('themeLabel');
+
+        function setTheme(theme) {
+            root.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            label.textContent = theme === 'dark' ? 'Dark' : 'Light';
+        }
+
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setTheme(saved || (prefersDark ? 'dark' : 'light'));
+
+        toggleBtn.addEventListener('click', () => {
+            const now = root.getAttribute('data-theme');
+            setTheme(now === 'dark' ? 'light' : 'dark');
+        });
+
+        /* =========================================================
+           YEAR
+           ========================================================= */
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        /* =========================================================
+           SCROLL REVEAL
+           ========================================================= */
+        const revealEls = [...document.querySelectorAll('.reveal')];
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('in');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {
+            threshold: 0.12
+        });
+        revealEls.forEach(el => io.observe(el));
+
+        /* =========================================================
+           COUNTERS (fixed so values display correctly)
+           ========================================================= */
+        const counters = [...document.querySelectorAll('[data-count]')];
+        const countIo = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
+                const el = e.target;
+                const to = Number(el.getAttribute('data-count')) || 0;
+                const dur = 900;
+                const start = performance.now();
+
+                function formatValue(v) {
+                    if (to === 24) return '24/7';
+                    if (to === 1) return '1';
+                    if (to === 90) return String(v);
+                    return String(v);
+                }
+
+                function tick(now) {
+                    const t = Math.min(1, (now - start) / dur);
+                    const val = Math.round((to) * (1 - Math.pow(1 - t, 3)));
+                    el.textContent = formatValue(val);
+                    if (t < 1) requestAnimationFrame(tick);
+                }
+
+                requestAnimationFrame(tick);
+                countIo.unobserve(el);
+            });
+        }, {
+            threshold: 0.4
+        });
+        counters.forEach(c => countIo.observe(c));
+
+        /* =========================================================
+           FAQ ACCORDION (Only one open)
+           ========================================================= */
+        /* ✅ FAQ ACCORDION (Only one open) */
+        (function setupFaqAccordion() {
+            const faqWrap = document.querySelector('.faq');
+            if (!faqWrap) return;
+
+            const allFaq = [...faqWrap.querySelectorAll('details')];
+
+            allFaq.forEach(d => {
+                d.addEventListener('toggle', () => {
+                    if (!d.open) return;
+                    allFaq.forEach(other => {
+                        if (other !== d) other.removeAttribute('open');
+                    });
+                });
+            });
+        })();
+
+        /* =========================================================
+           FORM VALIDATION
+           ========================================================= */
+        const form = document.getElementById('lead-form');
+        const nameEl = document.getElementById('name');
+        const emailEl = document.getElementById('email');
+        const phoneEl = document.getElementById('phone');
+        const submitBtn = document.getElementById('submitBtn');
+
+        function showError(id, show) {
+            const err = document.querySelector('.error[data-for="' + id + '"]');
+            if (!err) return;
+            err.style.display = show ? 'block' : 'none';
+        }
+
+        function isValidEmail(v) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v || '').trim());
+        }
+
+        function isValidPhone(v) {
+            const digits = String(v || '').replace(/\D/g, '');
+            return digits.length >= 10;
+        }
+
+        [nameEl, emailEl, phoneEl].forEach(el => {
+            el.addEventListener('input', () => {
+                if (el === nameEl) showError('name', String(el.value || '').trim().length < 2);
+                if (el === emailEl) showError('email', !isValidEmail(el.value));
+                if (el === phoneEl) showError('phone', !isValidPhone(el.value));
+            });
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const nameOk = String(nameEl.value || '').trim().length >= 2;
+            const emailOk = isValidEmail(emailEl.value);
+            const phoneOk = isValidPhone(phoneEl.value);
+
+            showError('name', !nameOk);
+            showError('email', !emailOk);
+            showError('phone', !phoneOk);
+
+            if (!(nameOk && emailOk && phoneOk)) {
+                const card = form.closest('.form-card');
+                card.style.transition = 'transform 120ms';
+                card.style.transform = 'translateX(-4px)';
+                setTimeout(() => card.style.transform = 'translateX(4px)', 120);
+                setTimeout(() => card.style.transform = 'translateX(0)', 240);
+                return;
+            }
+
+            const payload = {
+                name: nameEl.value.trim(),
+                email: emailEl.value.trim(),
+                phone: phoneEl.value.trim(),
+                source: "landing-page-rep-man"
+            };
+            console.log("Lead payload:", payload);
+
+            const old = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Request Received ✓';
+            submitBtn.style.filter = 'saturate(0.85)';
+
+            setTimeout(() => {
+                alert("Thanks! Your request has been received. We’ll reply within 1 business day.");
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = old;
+                submitBtn.style.filter = '';
+                form.reset();
+            }, 600);
+        });
+
+        /* =========================================================
+           MICRO INTERACTIONS: magnetic CTA (tiny parallax)
+           ========================================================= */
+        const magneticEls = document.querySelectorAll('.magnetic');
+        magneticEls.forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                el.style.transform = `translate(${x * 0.06}px, ${y * 0.12}px)`;
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+            });
+        });
+    </script>
+</body>
+
+</html>
