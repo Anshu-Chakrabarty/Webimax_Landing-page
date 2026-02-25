@@ -320,7 +320,7 @@
             color: #fff;
             padding: clamp(34px, 4vw, 46px) 0 clamp(18px, 2.6vw, 26px);
             overflow: hidden;
-            background: radial-gradient(900px 650px at 20% 10%, rgba(44, 193, 255, 0.40), transparent 60%), radial-gradient(900px 650px at 90% 10%, rgba(255, 122, 47, 0.18), transparent 55%), linear-gradient(135deg, var(--heroA) 0%, var(--heroB) 45%, var(--heroC) 100%);
+            background: linear-gradient(135deg, var(--heroA), var(--heroB));
             transition: background var(--t-slow) var(--ease);
             isolation: isolate;
         }
@@ -396,7 +396,7 @@
         }
         
         .hero h1 {
-            font-size: clamp(34px, 4.4vw, 56px);
+            font-size: clamp(42px, 5vw, 64px);
             line-height: 1.02;
             margin: 12px 0 12px;
             letter-spacing: -0.6px;
@@ -427,8 +427,8 @@
         
         .hero p {
             margin: 0 0 16px;
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 18px;
+            line-height: 1.7;
             color: rgba(255, 255, 255, 0.92);
             max-width: 55ch;
         }
@@ -578,7 +578,7 @@
             height: 12px;
             background: linear-gradient(135deg, #ffb44c, var(--accent));
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 67% 57%, 79% 91%, 50% 70%, 21% 91%, 33% 57%, 2% 35%, 39% 35%);
-            filter: drop-shadow(0 6px 10px rgba(255, 122, 47, 0.18));
+            filter: drop-shadow(0 4px 8px rgba(255, 122, 47, 0.4));
         }
         
         form {
@@ -681,6 +681,15 @@
             border-top: 1px dashed color-mix(in srgb, var(--border) 90%, transparent);
         }
         
+        .confidential-badge {
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+        
         .badge {
             display: flex;
             align-items: center;
@@ -726,19 +735,33 @@
        ========================================================= */
         
         .proof-strip {
-            background: var(--surface-strong);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            padding: clamp(16px, 2.4vw, 20px) 0;
+            background: transparent;
+            border: none;
+            padding: 30px 0 0;
             transition: background var(--t-med) var(--ease), border-color var(--t-med) var(--ease);
         }
         
         .logos {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 12px;
+            align-items: center;
+            gap: 60px;
             flex-wrap: wrap;
+            padding: 30px 0;
+        }
+        
+        .logo-img {
+            max-height: 38px;
+            width: auto;
+            opacity: 0.6;
+            filter: grayscale(100%);
+            transition: opacity .3s ease, transform .3s ease, filter .3s ease;
+        }
+        
+        .logo-img:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: translateY(-3px);
         }
         
         .logo-pill {
@@ -766,6 +789,70 @@
             letter-spacing: 0;
             color: color-mix(in srgb, var(--muted) 92%, transparent);
         }
+        /* ===== AS SEEN IN TITLE ===== */
+        
+        .as-seen {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: .08em;
+            margin-bottom: 35px;
+            color: #5520d2;
+        }
+        /* ===== LOGO SLIDER ===== */
+        
+        .logo-slider {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-track-wrapper {
+            overflow: hidden;
+            width: 80%;
+            margin: 0 auto;
+        }
+        
+        .logo-track {
+            display: flex;
+            gap: 120px;
+            align-items: center;
+            transition: transform 0.6s ease;
+        }
+        
+        .logo-track img {
+            max-height: 70px;
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.75;
+            transition: all .3s ease;
+        }
+        
+        .logo-track img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        /* Arrows */
+        
+        .logo-arrow {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--text);
+            padding: 10px;
+            opacity: 0.6;
+            transition: opacity .2s ease;
+        }
+        
+        .logo-arrow:hover {
+            opacity: 1;
+        }
+        /* =========================================
+   PREMIUM LOGO STRIP
+========================================= */
         /* =========================================================
        SECTIONS (consistent padding)
        ========================================================= */
@@ -833,7 +920,7 @@
         }
         
         .card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-3px);
             box-shadow: 0 18px 46px rgba(0, 0, 0, 0.14);
         }
         
@@ -1067,8 +1154,19 @@
         }
         
         .quote {
-            background: var(--surface-strong);
-            border: 1px solid var(--border);
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: var(--r24);
+            box-shadow: var(--shadow2);
+            padding: 18px;
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--t-med) var(--ease);
+        }
+        
+        html[data-theme="dark"] .quote {
+            background: #0f1b2d;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: var(--r24);
             box-shadow: var(--shadow2);
             padding: 18px;
@@ -1354,7 +1452,7 @@
        ========================================================= */
         
         .cta-band {
-            background: radial-gradient(800px 520px at 20% 20%, color-mix(in srgb, var(--secondary) 24%, transparent), transparent 60%), radial-gradient(800px 520px at 90% 10%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 55%), linear-gradient(135deg, var(--ctaA), var(--ctaB));
+            background: linear-gradient(135deg, #0f2747, #163a6b);
             color: #fff;
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
@@ -1371,7 +1469,7 @@
         
         .cta-wrap h3 {
             margin: 0;
-            font-size: clamp(20px, 2.3vw, 28px);
+            font-size: clamp(24px, 2.6vw, 34px);
             letter-spacing: -0.4px;
         }
         
@@ -1392,10 +1490,10 @@
        ========================================================= */
         
         .site-footer {
-            padding: var(--section-y) 0 clamp(34px, 5vw, 56px);
-            background: color-mix(in srgb, var(--ctaA) 88%, black);
-            border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
-            color: color-mix(in srgb, #ffffff 72%, transparent);
+            padding: var(--section-y) 0 clamp(40px, 5vw, 60px);
+            background: linear-gradient(180deg, #142c4d 0%, #0f223d 100%);
+            border-top: 1px solid rgba(255, 255, 255, .06);
+            color: color-mix(in srgb, #ffffff 75%, transparent);
         }
         
         html[data-theme="light"] .site-footer {
@@ -1455,12 +1553,12 @@
         
         .footer-pledge {
             border-radius: 18px;
-            background: rgba(255, 255, 255, .06);
-            border: 1px solid rgba(255, 255, 255, .12);
-            padding: 22px 22px 20px;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .14);
+            padding: 26px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, .25);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 18px 50px rgba(0, 0, 0, .22);
         }
         
         .footer-pledge::before {
@@ -1630,6 +1728,12 @@
                 transform: translateY(-4px);
             }
         }
+        
+        input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--accent);
+        }
         /* =========================================================
        RESPONSIVE
        ========================================================= */
@@ -1744,14 +1848,14 @@
                 <div class="hero-grid">
                     <div class="reveal">
                         <span class="pill">
-              <span class="dot"></span>
-                        <strong>10,000+ reputations repaired</strong>
-                        <span style="opacity:.75;">&nbsp;•&nbsp; Trusted when stakes are high</span>
+                           <span class="dot"></span>
+                        <strong>CONFIDENTIAL Reputation Support</strong>
+                        <span style="opacity:.75;">&nbsp;•&nbsp; 10,000+ reputations repaired</span>
                         </span>
 
-                        <h1><span class="shine">Control Your Online Reputation. Protect Your Brand.</span></h1>
+                        <h1><span class="shine">Take Back Control of Your Online Reputation.</span></h1>
                         <p>
-                            Get a free strategy call to identify quick wins and build a practical 90-day plan to repair, enhance, and protect your online presence.
+                            Get a confidential strategy call to identify quick wins and build a practical 90-day plan to repair, enhance, and protect your online presence. Every conversation is private and handled with discretion.
                         </p>
 
                         <div class="hero-bullets">
@@ -1798,10 +1902,13 @@
 
                     <!-- Lead Form -->
                     <aside class="form-card reveal" aria-label="Lead capture form">
+                        <div class="confidential-badge">
+                            CONFIDENTIAL CONSULTATION
+                        </div>
                         <div class="form-top">
                             <div>
                                 <p class="title">Get Your Free Strategy Call</p>
-                                <div class="meta">No spam. Response within 1 business day.</div>
+                                <div class="meta">100% confidential. No spam. Response within 1 business day.</div>
                             </div>
 
                             <div class="rating-chip" title="Customer rating">
@@ -1812,7 +1919,7 @@
                                     <div class="star"></div>
                                     <div class="star"></div>
                                 </div>
-                                <span>4.8/5</span>
+                                <span>5/5</span>
                             </div>
                         </div>
 
@@ -1841,8 +1948,17 @@
                   <span aria-hidden="true">→</span>
                 </button>
 
+                                <div class="field" style="margin-top:10px;">
+                                    <label style="display:flex; align-items:flex-start; gap:10px; font-size:12px; font-weight:600; cursor:pointer;">
+        <input type="checkbox" id="consent" required style="margin-top:3px;">
+        <span>
+            I agree to be contacted by phone, SMS, and email regarding my request. I understand my information will remain confidential.
+        </span>
+    </label>
+                                </div>
+
                                 <div class="microcopy">
-                                    By submitting, you agree we may contact you by phone/SMS/email about your request. Message/data rates may apply. You can opt out anytime.
+                                    Your information is strictly confidential. By submitting, you agree we may contact you by phone/SMS/email about your request. Message/data rates may apply. You can opt out anytime.
                                     <a href="#privacy">Privacy</a>.
                                 </div>
 
@@ -1891,13 +2007,51 @@
         <!-- Social proof strip -->
         <div class="proof-strip">
             <div class="container">
-                <div class="logos reveal floaty" aria-label="Trusted by">
-                    <div class="logo-pill">US News <span>featured</span></div>
-                    <div class="logo-pill">Clutch <span>top reviews</span></div>
-                    <div class="logo-pill">Newsweek <span>mentioned</span></div>
-                    <div class="logo-pill">UpCity <span>partner</span></div>
-                    <div class="logo-pill">Trusted by <span>5,000+ brands</span></div>
+
+                <div class="as-seen">Rated the Best Reputation Management Service For Over 17 Years!</div>
+
+                <div class="logo-slider">
+
+                    <button class="logo-arrow left" onclick="slideLogos(-1)">&#10094;</button>
+
+                    <div class="logo-track-wrapper">
+                        <div class="logo-track" id="logoTrack">
+                            <img src="us_news.png" alt="US News">
+                            <img src="clutch.png" alt="Clutch">
+                            <img src="newsweek.png" alt="Newsweek">
+                            <img src="upcity.png" alt="UpCity">
+                            <img src="business.png" alt="Business">
+
+                            <img src="us_news.png" alt="US News">
+                            <img src="clutch.png" alt="Clutch">
+                            <img src="newsweek.png" alt="Newsweek">
+                            <img src="upcity.png" alt="UpCity">
+                            <img src="business.png" alt="Business">
+
+                            <img src="us_news.png" alt="US News">
+                            <img src="clutch.png" alt="Clutch">
+                            <img src="newsweek.png" alt="Newsweek">
+                            <img src="upcity.png" alt="UpCity">
+                            <img src="business.png" alt="Business">
+
+                            <img src="us_news.png" alt="US News">
+                            <img src="clutch.png" alt="Clutch">
+                            <img src="newsweek.png" alt="Newsweek">
+                            <img src="upcity.png" alt="UpCity">
+                            <img src="business.png" alt="Business">
+
+                            <img src="us_news.png" alt="US News">
+                            <img src="clutch.png" alt="Clutch">
+                            <img src="newsweek.png" alt="Newsweek">
+                            <img src="upcity.png" alt="UpCity">
+                            <img src="business.png" alt="Business">
+                        </div>
+                    </div>
+
+                    <button class="logo-arrow right" onclick="slideLogos(1)">&#10095;</button>
+
                 </div>
+
             </div>
         </div>
 
@@ -1910,6 +2064,9 @@
                     <p>
                         Clear actions, measurable outcomes, and a plan that fits your brand. We focus on improving what people see first, because that’s what drives calls, bookings, and sales.
                     </p>
+                    <div style="margin-top:16px; font-weight:700; color:var(--primary);">
+                        Focused on what customers see first.
+                    </div>
                 </div>
 
                 <div class="grid3">
@@ -1960,7 +2117,7 @@
                         <div class="step reveal">
                             <div class="num">1</div>
                             <div>
-                                <h4>Analyze what’s hurting trust</h4>
+                                <h4>Confidentially analyze what’s hurting trust</h4>
                                 <p>We review branded search results, review profiles, and key mentions to find high-impact fixes.</p>
                             </div>
                         </div>
@@ -2209,7 +2366,7 @@
       stroke-linecap="round" stroke-linejoin="round"></path>
   </svg>
 </span></summary>
-                        <p>Yes. We can work under NDA and keep discussions discreet. We also avoid publishing anything that compromises privacy.</p>
+                        <p>Yes. All engagements are handled confidentially. We regularly work under NDA and operate with strict discretion. We never publish or disclose client details without explicit permission.</p>
                     </details>
 
                     <details class="reveal">
@@ -2230,8 +2387,9 @@
             <div class="container">
                 <div class="cta-wrap">
                     <div class="reveal">
-                        <h3>Ready for a clean, positive reputation on Page 1?</h3>
-                        <p>Request your free strategy call and we’ll outline quick wins and next steps. Simple, direct, and actionable.
+                        <h3>Ready for a clean, confidential reputation strategy?</h3>
+                        <p>
+                            Request your confidential strategy call and we’ll outline discreet, actionable next steps tailored to your situation.
                         </p>
                     </div>
                     <div class="cta-actions reveal">
@@ -2245,6 +2403,8 @@
 
     <footer class="site-footer" id="privacy" aria-label="Footer">
         <div class="container">
+            <div style="height:1px; background:linear-gradient(to right, transparent, rgba(255,255,255,.2), transparent); margin-bottom:40px;"></div>
+
             <div class="footer-grid">
                 <!-- LEFT -->
                 <div class="footer-left">
@@ -2255,22 +2415,6 @@
                     <p class="footer-desc">
                         WebiMax is a pioneer in digital reputation management, helping over 10,000 clients secure their brand integrity since 2008.
                     </p>
-
-                    <div class="footer-social" aria-label="Social links">
-                        <button class="social-btn" type="button" aria-label="Open LinkedIn (placeholder)" onclick="alert('Add your LinkedIn URL here')">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5ZM.5 8.5h4V23h-4V8.5ZM8.5 8.5h3.8v2h.05c.53-1 1.82-2.05 3.75-2.05 4 0 4.74 2.63 4.74 6.05V23h-4v-6.65c0-1.59-.03-3.64-2.22-3.64-2.22 0-2.56 1.73-2.56 3.52V23h-4V8.5Z" />
-              </svg>
-            </button>
-
-                        <button class="social-btn" type="button" aria-label="Open Facebook (placeholder)" onclick="alert('Add your Facebook URL here')">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M13.5 22v-8h2.7l.4-3H13.5V9.1c0-.9.3-1.6 1.7-1.6h1.5V5c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6V11H7v3h2.5v8h4Z" />
-              </svg>
-            </button>
-                    </div>
                 </div>
 
                 <!-- CENTER -->
@@ -2289,7 +2433,6 @@
           </a>
 
                     <button class="footer-btnlink" type="button" aria-label="Open Privacy Policy (placeholder)" onclick="alert('Add your Privacy Policy URL here')">Privacy Policy</button>
-                    <button class="footer-btnlink" type="button" aria-label="Open Terms of Service (placeholder)" onclick="alert('Add your Terms URL here')">Terms of Service</button>
                 </div>
             </div>
 
@@ -2315,8 +2458,8 @@
 
     <script>
         /* =========================================================
-                                                                                       THEME (Light/Dark) with persistence
-                                                                                       ========================================================= */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       THEME (Light/Dark) with persistence
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ========================================================= */
         const root = document.documentElement;
         const toggleBtn = document.getElementById('themeToggle');
         const label = document.getElementById('themeLabel');
@@ -2419,6 +2562,7 @@
         const emailEl = document.getElementById('email');
         const phoneEl = document.getElementById('phone');
         const submitBtn = document.getElementById('submitBtn');
+        const consentEl = document.getElementById('consent');
 
         function showError(id, show) {
             const err = document.querySelector('.error[data-for="' + id + '"]');
@@ -2449,12 +2593,13 @@
             const nameOk = String(nameEl.value || '').trim().length >= 2;
             const emailOk = isValidEmail(emailEl.value);
             const phoneOk = isValidPhone(phoneEl.value);
+            const consentOk = consentEl.checked;
 
             showError('name', !nameOk);
             showError('email', !emailOk);
             showError('phone', !phoneOk);
 
-            if (!(nameOk && emailOk && phoneOk)) {
+            if (!(nameOk && emailOk && phoneOk && consentOk)) {
                 const card = form.closest('.form-card');
                 card.style.transition = 'transform 120ms';
                 card.style.transform = 'translateX(-4px)';
@@ -2500,6 +2645,27 @@
                 el.style.transform = '';
             });
         });
+    </script>
+    <script>
+        const track = document.getElementById("logoTrack");
+        let index = 0;
+
+        function slideLogos(direction) {
+            const logos = track.children;
+            const logoWidth = logos[0].offsetWidth + 120;
+
+            index += direction;
+
+            if (index < 0) {
+                index = logos.length - 1;
+            }
+
+            if (index >= logos.length) {
+                index = 0;
+            }
+
+            track.style.transform = `translateX(-${index * logoWidth}px)`;
+        }
     </script>
 </body>
 
