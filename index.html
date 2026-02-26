@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -553,6 +553,28 @@
             font-weight: 700;
         }
         
+        .review-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(0, 113, 216, 0.08);
+            border: 1px solid rgba(0, 113, 216, 0.18);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all .2s ease;
+            cursor: pointer;
+        }
+        
+        .review-link:hover {
+            background: rgba(0, 113, 216, 0.14);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 113, 216, 0.12);
+        }
+        
         .rating-chip {
             position: relative;
             display: flex;
@@ -793,11 +815,11 @@
         
         .as-seen {
             text-align: center;
-            font-size: 22px;
+            font-size: 34px;
             font-weight: 900;
-            letter-spacing: .08em;
-            margin-bottom: 35px;
-            color: #5520d2;
+            letter-spacing: -0.5px;
+            margin-bottom: 40px;
+            color: #0e1526;
         }
         /* ===== LOGO SLIDER ===== */
         
@@ -818,14 +840,23 @@
             display: flex;
             gap: 120px;
             align-items: center;
-            transition: transform 0.6s ease;
+            animation: scrollLogos 30s linear infinite;
+        }
+        
+        @keyframes scrollLogos {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
         
         .logo-track img {
-            max-height: 70px;
+            max-height: 90px;
             width: auto;
             filter: grayscale(100%);
-            opacity: 0.75;
+            opacity: 0.8;
             transition: all .3s ease;
         }
         
@@ -1149,101 +1180,163 @@
         .test-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: var(--grid-gap);
-            margin-top: 18px;
+            gap: clamp(22px, 3vw, 32px);
+            margin-top: 32px;
         }
+        /* Card */
         
         .quote {
             background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: var(--r24);
-            box-shadow: var(--shadow2);
-            padding: 18px;
-            position: relative;
-            overflow: hidden;
-            transition: transform var(--t-med) var(--ease);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 26px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.04);
+            transition: transform var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        
-        html[data-theme="dark"] .quote {
-            background: #0f1b2d;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: var(--r24);
-            box-shadow: var(--shadow2);
-            padding: 18px;
-            position: relative;
-            overflow: hidden;
-            transition: transform var(--t-med) var(--ease);
-        }
+        /* Hover */
         
         .quote:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            box-shadow: 0 28px 60px rgba(0, 0, 0, 0.06);
         }
+        /* Stars */
         
-        .quote::before {
-            content: "";
-            position: absolute;
-            inset: -140px auto auto -140px;
-            width: 260px;
-            height: 260px;
-            background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%);
-            pointer-events: none;
+        .quote .stars {
+            color: #ff4d00;
+            font-size: 16px;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+            font-weight: 900;
         }
-        
-        .quote .top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            position: relative;
-        }
-        
-        .quote .name {
-            font-weight: 1000;
-            color: color-mix(in srgb, var(--text) 94%, transparent);
-            letter-spacing: -0.2px;
-            font-size: 14px;
-        }
-        
-        .quote .role {
-            font-size: 12px;
-            color: color-mix(in srgb, var(--muted) 92%, transparent);
-            font-weight: 850;
-            margin-top: 2px;
-        }
+        /* Quote Text */
         
         .quote .text {
-            position: relative;
-            margin-top: 10px;
-            color: color-mix(in srgb, var(--muted) 92%, transparent);
-            line-height: 1.7;
-            font-size: 14px;
-            font-weight: 650;
+            font-size: 15px;
+            line-height: 1.75;
+            color: var(--text);
+            margin-bottom: 18px;
+            font-weight: 500;
         }
+        /* Role */
+        
+        .quote .role {
+            font-size: 13px;
+            color: var(--muted);
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+        /* Verified */
         
         .quote .verified {
-            margin-top: 12px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
             font-size: 12px;
-            color: color-mix(in srgb, var(--mint) 55%, var(--text));
-            font-weight: 950;
-            position: relative;
+            font-weight: 700;
+            color: #2e9f63;
+        }
+        /* Small verified check */
+        
+        .quote .verified::before {
+            content: "✔";
+            font-size: 11px;
+            background: rgba(46, 159, 99, 0.12);
+            border: 1px solid rgba(46, 159, 99, 0.25);
+            border-radius: 6px;
+            padding: 2px 6px;
+        }
+        /* Remove old dark mode override completely */
+        
+        html[data-theme="dark"] .quote {
+            background: #ffffff;
+            border: 1px solid var(--border);
+        }
+        /* Responsive */
+        
+        @media (max-width: 1000px) {
+            .test-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
-        .check2 {
-            width: 18px;
-            height: 18px;
-            border-radius: 7px;
-            display: grid;
-            place-items: center;
-            background: color-mix(in srgb, var(--mint) 18%, transparent);
-            border: 1px solid color-mix(in srgb, var(--mint) 28%, transparent);
+        @media (max-width: 640px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
-        .check2 svg {
-            width: 12px;
-            height: 12px;
+        .reviews-section {
+            padding-bottom: 40px;
+        }
+        /* Clutch Logo Styling */
+        
+        .clutch-powered {
+            margin-top: 32px;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        
+        .clutch-powered a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: opacity .2s ease, transform .2s ease;
+        }
+        
+        .clutch-powered a:hover {
+            opacity: .8;
+            transform: translateY(-2px);
+        }
+        
+        .powered-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--muted);
+        }
+        
+        .clutch-logo {
+            height: 28px;
+            width: auto;
+        }
+        /* =========================================================
+   REVIEW SUMMARY BOX (ADD THIS)
+   ========================================================= */
+        
+        .review-summary {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+            margin: 30px 0 10px;
+        }
+        
+        .summary-left h3 {
+            margin: 0 0 10px;
+            font-size: 22px;
+            font-weight: 800;
+        }
+        
+        .summary-rating {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .rating-score {
+            font-size: 20px;
+            font-weight: 800;
+        }
+        
+        .rating-stars {
+            color: #ff4d00;
+            font-size: 18px;
+            letter-spacing: 2px;
         }
         /* =========================================================
        VIDEO PLACEHOLDERS
@@ -1254,6 +1347,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: var(--grid-gap);
             margin-top: 18px;
+            padding-top: 20px;
         }
         
         .video {
@@ -1450,12 +1544,15 @@
         /* =========================================================
        CTA BAND
        ========================================================= */
+        /* =========================================================
+   CTA BAND (Light Premium Version)
+   ========================================================= */
         
         .cta-band {
-            background: linear-gradient(135deg, #0f2747, #163a6b);
-            color: #fff;
+            background: linear-gradient( 135deg, rgba(0, 113, 216, 0.08), rgba(44, 193, 255, 0.06));
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
             transition: background var(--t-slow) var(--ease), border-color var(--t-med) var(--ease);
         }
         
@@ -1464,20 +1561,22 @@
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            padding: clamp(26px, 3.8vw, 40px) 0;
+            padding: clamp(30px, 4vw, 48px) 0;
         }
         
         .cta-wrap h3 {
             margin: 0;
             font-size: clamp(24px, 2.6vw, 34px);
             letter-spacing: -0.4px;
+            color: var(--text);
         }
         
         .cta-wrap p {
-            margin: 6px 0 0;
-            color: rgba(255, 255, 255, 0.82);
+            margin: 8px 0 0;
+            color: var(--muted);
             line-height: 1.6;
             max-width: 64ch;
+            font-weight: 600;
         }
         
         .cta-actions {
@@ -1486,155 +1585,105 @@
             flex-wrap: wrap;
         }
         /* =========================================================
-       FOOTER (consistent spacing)
-       ========================================================= */
+   FOOTER (Light Premium Cohesive Version)
+   ========================================================= */
+        /* =========================================================
+   MODERN SAAS FOOTER (Founder Removed + Upgraded)
+   ========================================================= */
         
         .site-footer {
-            padding: var(--section-y) 0 clamp(40px, 5vw, 60px);
-            background: linear-gradient(180deg, #142c4d 0%, #0f223d 100%);
-            border-top: 1px solid rgba(255, 255, 255, .06);
-            color: color-mix(in srgb, #ffffff 75%, transparent);
+            padding: clamp(90px, 9vw, 130px) 0 70px;
+            background: linear-gradient( 180deg, #f8fbff 0%, #eef6ff 100%);
+            border-top: 1px solid var(--border);
+            color: var(--text);
         }
+        /* Remove old theme override completely */
         
         html[data-theme="light"] .site-footer {
-            background: #223140;
+            background: linear-gradient( 180deg, #f8fbff 0%, #eef6ff 100%);
         }
+        /* Clean 2-column layout instead of 3 */
         
         .footer-grid {
             display: grid;
-            grid-template-columns: 1.1fr 1.2fr .7fr;
-            gap: clamp(18px, 3vw, 28px);
+            grid-template-columns: 1.2fr .8fr;
+            gap: clamp(50px, 7vw, 100px);
             align-items: start;
+        }
+        /* LEFT SIDE */
+        
+        .footer-left {
+            max-width: 540px;
         }
         
         .footer-logo {
-            width: 200px;
+            width: 210px;
             height: auto;
-            display: block;
+            margin-bottom: 24px;
         }
         
         .footer-desc {
-            margin: 14px 0 16px;
-            max-width: 46ch;
-            line-height: 1.7;
-            font-size: 14px;
-            color: color-mix(in srgb, #ffffff 70%, transparent);
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-        
-        .social-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: grid;
-            place-items: center;
-            background: rgba(255, 255, 255, .10);
-            border: 1px solid rgba(255, 255, 255, .14);
-            transition: transform var(--t-fast) var(--ease), filter var(--t-fast) var(--ease);
-            cursor: pointer;
-        }
-        
-        .social-btn:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.08);
-        }
-        
-        .social-btn svg {
-            width: 18px;
-            height: 18px;
-            fill: #ffffff;
-            opacity: .92;
-        }
-        
-        .footer-pledge {
-            border-radius: 18px;
-            background: rgba(255, 255, 255, .08);
-            border: 1px solid rgba(255, 255, 255, .14);
-            padding: 26px;
-            box-shadow: 0 24px 60px rgba(0, 0, 0, .25);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .footer-pledge::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 5px;
-            background: var(--accent);
-        }
-        
-        .pledge-title {
-            margin: 0 0 10px;
-            font-size: 22px;
-            letter-spacing: -0.2px;
-            color: var(--accent);
-            font-weight: 950;
-        }
-        
-        .pledge-quote {
-            margin: 0 0 14px;
-            font-style: italic;
-            line-height: 1.7;
             font-size: 15px;
-            color: color-mix(in srgb, #ffffff 82%, transparent);
-        }
-        
-        .pledge-sign {
+            line-height: 1.85;
+            color: var(--muted);
+            font-weight: 500;
             margin: 0;
-            font-size: 14px;
-            color: #ffffff;
-            font-weight: 900;
         }
+        /* RIGHT SIDE */
         
         .footer-right {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 22px;
             align-items: flex-start;
-            padding-top: 10px;
+            padding-top: 6px;
         }
         
         .footer-link,
         .footer-btnlink {
-            color: color-mix(in srgb, #ffffff 78%, transparent);
-            font-size: 14px;
-            text-decoration: none;
-            transition: filter var(--t-fast) var(--ease);
-            background: transparent;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            background: none;
             border: 0;
             padding: 0;
             cursor: pointer;
-            font-family: inherit;
+            text-decoration: none;
+            transition: color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
         }
         
         .footer-link:hover,
         .footer-btnlink:hover {
-            filter: brightness(1.12);
-            text-decoration: underline;
+            color: var(--primary);
+            transform: translateX(2px);
         }
         
         .footer-link.phone {
+            font-size: 20px;
             font-weight: 900;
-            font-size: 16px;
-            letter-spacing: .2px;
-            color: color-mix(in srgb, #ffffff 88%, transparent);
+            letter-spacing: .3px;
+            color: var(--primary);
         }
+        /* Bottom strip */
         
         .footer-bottom {
-            margin-top: clamp(22px, 3vw, 36px);
-            padding-top: 18px;
-            border-top: 1px solid rgba(255, 255, 255, .10);
+            margin-top: clamp(50px, 6vw, 80px);
+            padding-top: 26px;
+            border-top: 1px solid var(--border);
             text-align: center;
             font-size: 13px;
-            color: rgba(255, 255, 255, .55);
+            color: var(--muted);
+        }
+        /* Responsive */
+        
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-right {
+                gap: 18px;
+            }
         }
         /* =========================================================
        MOBILE STICKY BAR
@@ -1735,6 +1784,101 @@
             accent-color: var(--accent);
         }
         /* =========================================================
+   FOUNDER AUTHORITY – Modern SaaS Style
+   ========================================================= */
+        
+        .founder-authority {
+            padding: clamp(60px, 7vw, 100px) 0 30px;
+            background: #eeecf7;
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .founder-wrap {
+            display: grid;
+            grid-template-columns: 1.4fr .6fr;
+            gap: 60px;
+            align-items: center;
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: #ffffff;
+            box-shadow: 0 20px 60px rgba(0, 113, 216, 0.06);
+        }
+        
+        .founder-eyebrow {
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        
+        .founder-heading {
+            margin: 0 0 16px;
+            font-size: clamp(24px, 2.8vw, 34px);
+            letter-spacing: -0.4px;
+            color: var(--text);
+        }
+        
+        .founder-statement {
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--muted);
+            margin: 0 0 20px;
+            max-width: 60ch;
+        }
+        
+        .founder-meta {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+        }
+        
+        .founder-meta span {
+            display: block;
+            margin-top: 4px;
+            font-weight: 600;
+            color: var(--muted);
+        }
+        /* Right side proof panel */
+        
+        .founder-proof {
+            padding: 30px;
+            border-radius: 16px;
+            background: linear-gradient( 135deg, rgba(0, 113, 216, 0.10), rgba(44, 193, 255, 0.08));
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .proof-badge {
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--primary);
+        }
+        
+        .proof-sub {
+            margin-top: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--muted);
+        }
+        /* Responsive */
+        
+        @media (max-width: 900px) {
+            .founder-wrap {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px;
+            }
+            .founder-proof {
+                text-align: left;
+            }
+        }
+        /* =========================================================
        RESPONSIVE
        ========================================================= */
         
@@ -1817,10 +1961,7 @@
 
 
                 <div class="top-ctas">
-                    <button class="toggle" id="themeToggle" type="button" aria-label="Toggle light or dark mode">
-            <span class="label" id="themeLabel">Light</span>
-            <span class="switch" aria-hidden="true"><span class="knob"></span></span>
-          </button>
+
 
                     <a class="btn btn-ghost" href="tel:+18568306359" aria-label="Call 856-830-6359">
                         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -1999,6 +2140,42 @@
             </div>
         </section>
 
+        <section class="founder-authority">
+            <div class="container">
+                <div class="founder-wrap reveal">
+
+                    <div class="founder-content">
+                        <div class="founder-eyebrow">
+                            Founder Commitment
+                        </div>
+
+                        <h3 class="founder-heading">
+                            Strategy backed by direct founder accountability.
+                        </h3>
+
+                        <p class="founder-statement">
+                            “I will always make myself available to you. To facilitate this, I provide all clients with my personal cell phone number.”
+                        </p>
+
+                        <div class="founder-meta">
+                            <strong>Ken Wisnefski</strong>
+                            <span>Founder • Est. 2008 • 10,000+ Clients Served</span>
+                        </div>
+                    </div>
+
+                    <div class="founder-proof">
+                        <div class="proof-badge">
+                            Founder-Backed
+                        </div>
+                        <div class="proof-sub">
+                            Direct executive access
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- Social proof strip -->
         <div class="proof-strip">
             <div class="container">
@@ -2011,24 +2188,6 @@
 
                     <div class="logo-track-wrapper">
                         <div class="logo-track" id="logoTrack">
-                            <img src="us_news.png" alt="US News">
-                            <img src="clutch.png" alt="Clutch">
-                            <img src="newsweek.png" alt="Newsweek">
-                            <img src="upcity.png" alt="UpCity">
-                            <img src="business.png" alt="Business">
-
-                            <img src="us_news.png" alt="US News">
-                            <img src="clutch.png" alt="Clutch">
-                            <img src="newsweek.png" alt="Newsweek">
-                            <img src="upcity.png" alt="UpCity">
-                            <img src="business.png" alt="Business">
-
-                            <img src="us_news.png" alt="US News">
-                            <img src="clutch.png" alt="Clutch">
-                            <img src="newsweek.png" alt="Newsweek">
-                            <img src="upcity.png" alt="UpCity">
-                            <img src="business.png" alt="Business">
-
                             <img src="us_news.png" alt="US News">
                             <img src="clutch.png" alt="Clutch">
                             <img src="newsweek.png" alt="Newsweek">
@@ -2165,90 +2324,94 @@
         </section>
 
         <!-- Testimonials -->
-        <section>
+        <section class="reviews-section">
             <div class="container">
+
+                <!-- Section Header -->
                 <div class="section-head reveal">
-                    <span class="kicker">Results delivered</span>
+                    <span class="kicker">Results Delivered</span>
                     <h2>Trusted by teams that care about reputation</h2>
-                    <p>Short quotes near decision points help reduce hesitation and boost conversions.</p>
+                    <p>No matter the objective, delivering results on time is paramount.</p>
                 </div>
 
+                <!-- Rating Header (Clutch Style) -->
+                <div class="review-summary reveal">
+                    <div class="summary-left">
+                        <h3>WebiMax Reviews</h3>
+                        <div class="summary-rating">
+                            <span class="rating-score">5.0</span>
+                            <span class="rating-stars">★★★★★</span>
+                            <a href="https://clutch.co/profile/webimax?..." target="_blank" class="review-link">
+   26+ verified client reviews <span>→</span>
+</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6 Review Cards -->
                 <div class="test-grid">
+
+                    <!-- CARD 1 -->
                     <div class="quote reveal">
-                        <div class="top">
-                            <div>
-                                <div class="name">“Moves quickly, quality stays high.”</div>
-                                <div class="role">President, Production Company</div>
-                            </div>
-                            <div class="stars" aria-hidden="true">
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                            </div>
-                        </div>
-                        <div class="text">We saw clear progress fast and the communication was excellent throughout.</div>
-                        <div class="verified">
-                            <span class="check2" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                </svg>
-              </span> Verified review
-                        </div>
+                        <div class="stars">★★★★★</div>
+                        <div class="text">"WebiMax moves quickly and never compromises on quality."</div>
+                        <div class="role">President, Production Company</div>
+                        <div class="verified">Verified Review</div>
                     </div>
 
+                    <!-- CARD 2 -->
                     <div class="quote reveal">
-                        <div class="top">
-                            <div>
-                                <div class="name">“Clear plan and easy to work with.”</div>
-                                <div class="role">Director of Marketing, Retail</div>
-                            </div>
-                            <div class="stars" aria-hidden="true">
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                            </div>
-                        </div>
-                        <div class="text">They explained the steps, set expectations, and executed without surprises.</div>
-                        <div class="verified">
-                            <span class="check2" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                </svg>
-              </span> Verified review
-                        </div>
+                        <div class="stars">★★★★★</div>
+                        <div class="text">"Excellent communication and a clear strategic roadmap."</div>
+                        <div class="role">Director of Marketing, Retail</div>
+                        <div class="verified">Verified Review</div>
                     </div>
 
+                    <!-- CARD 3 -->
                     <div class="quote reveal">
-                        <div class="top">
-                            <div>
-                                <div class="name">“Helped us protect our brand.”</div>
-                                <div class="role">Founder, Services Business</div>
-                            </div>
-                            <div class="stars" aria-hidden="true">
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                                <div class="star"></div>
-                            </div>
-                        </div>
-                        <div class="text">Monitoring and support gave us peace of mind. Problems got handled quickly.</div>
-                        <div class="verified">
-                            <span class="check2" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                </svg>
-              </span> Verified review
-                        </div>
+                        <div class="stars">★★★★★</div>
+                        <div class="text">"Their team handled issues quickly and professionally."</div>
+                        <div class="role">Founder, Services Business</div>
+                        <div class="verified">Verified Review</div>
                     </div>
+
+                    <!-- CARD 4 -->
+                    <div class="quote reveal">
+                        <div class="stars">★★★★★</div>
+                        <div class="text">"From start to finish, the execution was seamless."</div>
+                        <div class="role">COO, Home Services Company</div>
+                        <div class="verified">Verified Review</div>
+                    </div>
+
+                    <!-- CARD 5 -->
+                    <div class="quote reveal">
+                        <div class="stars">★★★★★</div>
+                        <div class="text">"Strong partnership and consistent delivery across campaigns."</div>
+                        <div class="role">CEO, Unique Venues</div>
+                        <div class="verified">Verified Review</div>
+                    </div>
+
+                    <!-- CARD 6 -->
+                    <div class="quote reveal">
+                        <div class="stars">★★★★★</div>
+                        <div class="text">"WebiMax has significantly strengthened our brand presence."</div>
+                        <div class="role">National Customer Care Manager</div>
+                        <div class="verified">Verified Review</div>
+                    </div>
+
                 </div>
+
+                <!-- Powered by Clutch -->
+                <div class="clutch-powered">
+                    <a href="https://clutch.co/profile/webimax?utm_source=widget&utm_medium=8&utm_campaign=widget&utm_content=num_reviews&utm_term=lp.webimax.com#reviews" target="_blank" rel="noopener">
+
+                        <span class="powered-text">Powered by</span>
+
+                        <img src="clutch.png" alt="Clutch Reviews" class="clutch-logo">
+
+                    </a>
+                </div>
+
             </div>
         </section>
 
@@ -2396,44 +2559,37 @@
         </section>
     </main>
 
-    <footer class="site-footer" id="privacy" aria-label="Footer">
+    <footer class="site-footer" id="privacy">
         <div class="container">
-            <div style="height:1px; background:linear-gradient(to right, transparent, rgba(255,255,255,.2), transparent); margin-bottom:40px;"></div>
 
             <div class="footer-grid">
-                <!-- LEFT -->
+
+                <!-- LEFT COLUMN -->
                 <div class="footer-left">
-                    <a href="#top" class="footer-brand" aria-label="Back to top">
-                        <img src="WebiMax_Logo-Digital.png" alt="WebiMax logo" class="footer-logo" />
-                    </a>
+                    <img src="WebiMax_Logo-Digital.png" alt="WebiMax logo" class="footer-logo" />
 
                     <p class="footer-desc">
                         WebiMax is a pioneer in digital reputation management, helping over 10,000 clients secure their brand integrity since 2008.
                     </p>
                 </div>
 
-                <!-- CENTER -->
-                <div class="footer-pledge" aria-label="Founder pledge">
-                    <h3 class="pledge-title">Founder’s Pledge</h3>
-                    <p class="pledge-quote">
-                        “I will always make myself available to you. To facilitate this, I provide all clients with my personal cell phone number.”
-                    </p>
-                    <p class="pledge-sign">– Ken Wisnefski, Founder</p>
+                <!-- RIGHT COLUMN -->
+                <div class="footer-right">
+                    <a class="footer-link phone" href="tel:+18568306359">
+          856-830-6359
+        </a>
+
+                    <button class="footer-btnlink" type="button">
+          Privacy Policy
+        </button>
                 </div>
 
-                <!-- RIGHT -->
-                <div class="footer-right" aria-label="Contact and policies">
-                    <a class="footer-link phone" href="tel:+18568306359" aria-label="Call 856-830-6359">
-            856-830-6359
-          </a>
-
-                    <button class="footer-btnlink" type="button" aria-label="Open Privacy Policy (placeholder)" onclick="alert('Add your Privacy Policy URL here')">Privacy Policy</button>
-                </div>
             </div>
 
             <div class="footer-bottom">
-                © <span id="year"></span> WebiMax LLC. Confidential prepared for official Webimax campaign.
+                © <span id="year"></span> WebiMax LLC. All rights reserved.
             </div>
+
         </div>
     </footer>
 
@@ -2452,27 +2608,11 @@
     </div>
 
     <script>
+        document.documentElement.setAttribute('data-theme', 'light');
         /* =========================================================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               THEME (Light/Dark) with persistence
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ========================================================= */
-        const root = document.documentElement;
-        const toggleBtn = document.getElementById('themeToggle');
-        const label = document.getElementById('themeLabel');
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       THEME (Light/Dark) with persistence
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ========================================================= */
 
-        function setTheme(theme) {
-            root.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            label.textContent = theme === 'dark' ? 'Dark' : 'Light';
-        }
-
-        const saved = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        setTheme(saved || (prefersDark ? 'dark' : 'light'));
-
-        toggleBtn.addEventListener('click', () => {
-            const now = root.getAttribute('data-theme');
-            setTheme(now === 'dark' ? 'light' : 'dark');
-        });
 
         /* =========================================================
            YEAR
@@ -2640,27 +2780,6 @@
                 el.style.transform = '';
             });
         });
-    </script>
-    <script>
-        const track = document.getElementById("logoTrack");
-        let index = 0;
-
-        function slideLogos(direction) {
-            const logos = track.children;
-            const logoWidth = logos[0].offsetWidth + 120;
-
-            index += direction;
-
-            if (index < 0) {
-                index = logos.length - 1;
-            }
-
-            if (index >= logos.length) {
-                index = 0;
-            }
-
-            track.style.transform = `translateX(-${index * logoWidth}px)`;
-        }
     </script>
 </body>
 
