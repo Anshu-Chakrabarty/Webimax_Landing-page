@@ -31,54 +31,29 @@
          Control section rhythm + padding from one place
          ========================================================= */
             --container-pad: clamp(16px, 3.2vw, 40px);
-            --section-y: clamp(56px, 7vw, 96px);
-            --section-y-compact: clamp(44px, 6vw, 72px);
+            --section-y: clamp(48px, 5vw, 72px);
+            --section-y-compact: clamp(36px, 4vw, 56px);
             --head-gap: clamp(14px, 2vw, 22px);
             --grid-gap: clamp(14px, 2vw, 18px);
         }
         
         html[data-theme="light"] {
-            --page: radial-gradient(1000px 700px at 20% 10%, rgba(44, 193, 255, 0.22), transparent 60%), radial-gradient(900px 650px at 90% 20%, rgba(255, 122, 47, 0.14), transparent 55%), radial-gradient(900px 700px at 60% 90%, rgba(0, 113, 216, 0.18), transparent 60%), linear-gradient(180deg, #f6f9ff 0%, #eef6ff 50%, #ffffff 100%);
-            --text: #0e1526;
-            --muted: #5d6a83;
-            --surface: rgba(255, 255, 255, 0.82);
-            --surface-strong: rgba(255, 255, 255, 0.92);
-            --surface-soft: rgba(7, 31, 64, 0.04);
-            --border: rgba(10, 20, 40, 0.08);
-            --border-strong: rgba(10, 20, 40, 0.12);
-            --primary: #0071d8;
+            --page: #f7f9fc;
+            /* clean, calm, professional canvas */
+            --text: #0f172a;
+            --muted: #64748b;
+            --surface: #ffffff;
+            --surface-strong: #ffffff;
+            --surface-soft: #f3f6fb;
+            --border: rgba(15, 23, 42, 0.08);
+            --border-strong: rgba(15, 23, 42, 0.12);
+            --primary: #0f62fe;
             --secondary: #2cc1ff;
             --support: #1980ea;
             --accent: #ff7a2f;
             --mint: #2fe3a1;
             --heroA: #045ac0;
             --heroB: #0d83ff;
-            --heroC: #2cc1ff;
-            --ctaA: #061b3a;
-            --ctaB: #083060;
-            --btnTextDark: #071a33;
-            --btnTextLight: #ffffff;
-        }
-        
-        html[data-theme="dark"] {
-            --page: radial-gradient(1000px 700px at 20% 10%, rgba(44, 193, 255, 0.14), transparent 60%), radial-gradient(900px 650px at 90% 20%, rgba(255, 122, 47, 0.10), transparent 55%), radial-gradient(900px 700px at 60% 90%, rgba(0, 113, 216, 0.12), transparent 60%), linear-gradient(180deg, #060d18 0%, #070f1f 55%, #050b14 100%);
-            --text: #eaf1ff;
-            --muted: #a8b6d8;
-            --surface: rgba(14, 22, 40, 0.72);
-            --surface-strong: rgba(14, 22, 40, 0.86);
-            --surface-soft: rgba(255, 255, 255, 0.06);
-            --border: rgba(255, 255, 255, 0.10);
-            --border-strong: rgba(255, 255, 255, 0.14);
-            --primary: #3aa2ff;
-            --secondary: #66d4ff;
-            --support: #4db0ff;
-            --accent: #ff8a44;
-            --mint: #43f2b2;
-            --heroA: #062a55;
-            --heroB: #0a4a93;
-            --heroC: #1f9bd0;
-            --ctaA: #040a13;
-            --ctaB: #071629;
             --btnTextDark: #071a33;
             --btnTextLight: #ffffff;
         }
@@ -100,9 +75,9 @@
             margin: 0;
             font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
             color: var(--text);
-            background: var(--page);
+            background-color: var(--page);
             overflow-x: hidden;
-            transition: background var(--t-slow) var(--ease), color var(--t-med) var(--ease);
+            -webkit-font-smoothing: antialiased;
         }
         
         a {
@@ -326,19 +301,6 @@
             isolation: isolate;
         }
         
-        .hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(115deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.08) 20%, rgba(255, 255, 255, 0.00) 40%, rgba(255, 255, 255, 0.06) 60%, rgba(255, 255, 255, 0.00) 80%);
-            mix-blend-mode: overlay;
-            transform: translateX(-25%);
-            animation: shimmer 10s var(--ease) infinite;
-            opacity: .6;
-            z-index: 0;
-            pointer-events: none;
-        }
-        
         @keyframes shimmer {
             0% {
                 transform: translateX(-35%);
@@ -518,18 +480,6 @@
             background: color-mix(in srgb, var(--surface-strong) 92%, #0b1221);
         }
         
-        .form-card::before {
-            content: "";
-            position: absolute;
-            inset: -120px -120px auto auto;
-            width: 260px;
-            height: 260px;
-            background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--secondary) 26%, transparent), transparent 60%);
-            filter: blur(2px);
-            transform: rotate(20deg);
-            pointer-events: none;
-        }
-        
         .form-top {
             position: relative;
             display: flex;
@@ -701,7 +651,6 @@
             align-items: center;
             margin-top: 10px;
             padding-top: 10px;
-            border-top: 1px dashed color-mix(in srgb, var(--border) 90%, transparent);
         }
         
         .confidential-badge {
@@ -758,13 +707,11 @@
        ========================================================= */
         
         .proof-strip {
-            background: transparent;
+            background: #ffffff;
             border: none;
-            padding: 30px 0 0;
+            padding: 50px 0;
             transition: background var(--t-med) var(--ease), border-color var(--t-med) var(--ease);
-            border-top: none !important;
-            margin-top: -200px;
-            padding-top: 200px;
+            margin: 0;
         }
         
         .logos {
@@ -857,10 +804,10 @@
         }
         
         .logo-track img {
-            max-height: 90px;
+            max-height: 70px;
             width: auto;
             filter: grayscale(100%);
-            opacity: 0.8;
+            opacity: 0.7;
             transition: all .3s ease;
         }
         
@@ -944,11 +891,11 @@
         }
         
         .card {
-            background: var(--surface-strong);
+            background: #ffffff;
             border: 1px solid var(--border);
-            border-radius: var(--r24);
-            box-shadow: var(--shadow2);
-            padding: 18px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            padding: 20px;
             position: relative;
             overflow: hidden;
             transition: transform var(--t-med) var(--ease), box-shadow var(--t-med) var(--ease), background var(--t-med) var(--ease);
@@ -957,18 +904,6 @@
         .card:hover {
             transform: translateY(-3px);
             box-shadow: 0 18px 46px rgba(0, 0, 0, 0.14);
-        }
-        
-        .card::before {
-            content: "";
-            position: absolute;
-            inset: -120px auto auto -120px;
-            width: 240px;
-            height: 240px;
-            background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--secondary) 18%, transparent), transparent 60%);
-            transform: rotate(12deg);
-            opacity: .95;
-            pointer-events: none;
         }
         
         .card .ic {
@@ -1057,18 +992,6 @@
             transform: translateY(-3px);
         }
         
-        .step::after {
-            content: "";
-            position: absolute;
-            inset: auto -160px -160px auto;
-            width: 260px;
-            height: 260px;
-            background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%);
-            transform: rotate(-10deg);
-            opacity: .9;
-            pointer-events: none;
-        }
-        
         .num {
             width: 38px;
             height: 38px;
@@ -1109,18 +1032,6 @@
             position: relative;
             overflow: hidden;
             transition: background var(--t-med) var(--ease);
-        }
-        
-        .side-panel::before {
-            content: "";
-            position: absolute;
-            inset: -140px -140px auto auto;
-            width: 280px;
-            height: 280px;
-            background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--primary) 20%, transparent), transparent 60%);
-            transform: rotate(22deg);
-            opacity: .9;
-            pointer-events: none;
         }
         
         .side-panel h3 {
@@ -1188,9 +1099,8 @@
 ========================================= */
         
         .review-proof {
-            padding: 80px 0;
-            background: #f6f9ff;
-            /* same soft light tone used across page */
+            background: transparent;
+            padding: var(--section-y) 0;
         }
         
         .review-box {
@@ -1304,115 +1214,127 @@
         /* =========================================================
        VIDEO PLACEHOLDERS
        ========================================================= */
+        /* =========================================================
+   VIDEO TESTIMONIAL CARDS (Light, Clean, Consistent)
+   ========================================================= */
+        /* =========================================================
+   VIDEO TESTIMONIAL SECTION (Clean SaaS Version)
+   ========================================================= */
+        /* Grid */
         
         .video-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: var(--grid-gap);
-            margin-top: 18px;
-            padding-top: 20px;
+            gap: 28px;
+            margin-top: 30px;
         }
+        /* Card */
         
-        .video {
-            border-radius: var(--r24);
-            background: radial-gradient(900px 500px at 30% 30%, color-mix(in srgb, var(--secondary) 16%, transparent), transparent 60%), linear-gradient(135deg, color-mix(in srgb, var(--ctaA) 92%, black), color-mix(in srgb, var(--ctaB) 96%, black));
-            border: 1px solid var(--border);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.26);
-            padding: 18px;
-            min-height: 210px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        .video-card {
             position: relative;
+            border-radius: 26px;
             overflow: hidden;
-            color: #fff;
-            transition: transform var(--t-med) var(--ease);
+            cursor: pointer;
+            transition: transform .3s ease;
         }
         
-        .video:hover {
-            transform: translateY(-5px);
+        .video-card:hover {
+            transform: translateY(-4px);
         }
         
-        .video::before {
-            content: "";
+        .video-card img {
+            width: 100%;
+            display: block;
+            border-radius: 26px;
+        }
+        /* Play Button */
+        
+        .play-btn {
             position: absolute;
-            inset: -160px -140px auto auto;
-            width: 340px;
-            height: 340px;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.16), transparent 60%);
-            transform: rotate(18deg);
-            opacity: .8;
-            pointer-events: none;
-        }
-        
-        .play {
-            width: 56px;
-            height: 56px;
-            border-radius: 22px;
-            display: grid;
-            place-items: center;
-            background: rgba(255, 255, 255, 0.14);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
-            position: relative;
-            transition: transform var(--t-fast) var(--ease);
-        }
-        
-        .video:hover .play {
-            transform: scale(1.05);
-        }
-        
-        .play svg {
-            width: 20px;
-            height: 20px;
-        }
-        
-        .video .label {
-            position: relative;
-            font-weight: 1000;
-            letter-spacing: -0.2px;
-            margin: 10px 0 0;
-        }
-        
-        .video .sub {
-            position: relative;
-            color: rgba(255, 255, 255, 0.78);
-            margin: 6px 0 0;
-            line-height: 1.5;
-            font-size: 13px;
-            max-width: 44ch;
-        }
-        
-        .video .note {
-            position: relative;
-            margin-top: 14px;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.72);
-            font-weight: 850;
+            inset: 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
         }
         
-        .pulse {
-            width: 10px;
-            height: 10px;
-            border-radius: 999px;
-            background: var(--accent);
-            box-shadow: 0 0 0 0 rgba(255, 122, 47, 0.25);
-            animation: pulse 1.7s var(--ease) infinite;
+        .play-circle {
+            width: 90px;
+            height: 90px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #1a56db;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            transition: transform .3s ease;
         }
         
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(255, 122, 47, 0.25);
-            }
-            70% {
-                box-shadow: 0 0 0 12px rgba(255, 122, 47, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(255, 122, 47, 0);
+        .video-card:hover .play-circle {
+            transform: scale(1.1);
+        }
+        /* =============================
+   MODAL
+============================= */
+        
+        .video-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 40px;
+        }
+        
+        .video-modal.active {
+            display: flex;
+        }
+        
+        .video-modal-content {
+            position: relative;
+            width: 100%;
+            max-width: 1100px;
+            border-radius: 30px;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        .video-modal-content video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Close Button */
+        
+        .close-modal {
+            position: absolute;
+            z-index: 10;
+            top: 18px;
+            right: 18px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: background .2s ease;
+        }
+        
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+        /* Responsive */
+        
+        @media (max-width: 980px) {
+            .video-grid {
+                grid-template-columns: 1fr;
             }
         }
         /* =========================================================
@@ -1512,9 +1434,8 @@
    ========================================================= */
         
         .cta-band {
-            background: linear-gradient( 135deg, rgba(0, 113, 216, 0.08), rgba(44, 193, 255, 0.06));
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            background: transparent;
+            border: none;
             backdrop-filter: blur(10px);
             transition: background var(--t-slow) var(--ease), border-color var(--t-med) var(--ease);
         }
@@ -1557,7 +1478,7 @@
         .site-footer {
             padding: 70px 0 0;
             /* reduced top & bottom spacing */
-            background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
+            background: #f7f9fc;
             border-top: 1px solid var(--border);
             color: var(--text);
         }
@@ -1749,103 +1670,109 @@
             height: 16px;
             accent-color: var(--accent);
         }
-        /* =========================================================
-   FOUNDER AUTHORITY – Modern SaaS Style
-   ========================================================= */
+        /* =========================================
+   FOUNDER AUTHORITY – Full Background Version
+========================================= */
+        /* =========================================
+   FOUNDER AUTHORITY – FINAL FIXED VERSION
+========================================= */
         
         .founder-authority {
-            padding: clamp(60px, 7vw, 100px) 0 70px;
-            background: #ffffff !important;
-            border-bottom: none;
-            margin-bottom: 0;
-            box-shadow: none !important;
+            padding: 100px 0;
+            background: transparent;
         }
+        /* Box container with image */
         
         .founder-wrap {
-            display: grid;
-            grid-template-columns: 1.4fr .6fr;
-            gap: 60px;
-            align-items: center;
-            padding: 50px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            background: #ffffff;
-            box-shadow: 0 20px 60px rgba(0, 113, 216, 0.06);
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 90px 60px;
+            border-radius: 32px;
+            overflow: hidden;
+            text-align: center;
+            background-image: linear-gradient(rgba(18, 56, 150, 0.65), rgba(18, 56, 150, 0.75)), url("Ken2.jpg");
+            /* ✅ Correct path */
+            background-size: cover;
+            background-position: center 25%;
+            background-repeat: no-repeat;
+            color: #ffffff;
         }
+        /* REMOVE right side proof */
+        
+        .founder-proof {
+            display: none;
+        }
+        /* Eyebrow */
         
         .founder-eyebrow {
-            font-size: 12px;
-            font-weight: 900;
-            letter-spacing: .18em;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: .15em;
             text-transform: uppercase;
-            color: var(--primary);
-            margin-bottom: 12px;
+            margin-bottom: 18px;
+            color: #ffffff;
         }
+        /* Heading */
         
         .founder-heading {
-            margin: 0 0 16px;
-            font-size: clamp(24px, 2.8vw, 34px);
-            letter-spacing: -0.4px;
-            color: var(--text);
+            margin: 0 0 24px;
+            font-size: clamp(32px, 3vw, 42px);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #ffffff;
         }
+        /* Statement */
         
         .founder-statement {
-            font-size: 17px;
-            line-height: 1.7;
-            color: var(--muted);
-            margin: 0 0 20px;
-            max-width: 60ch;
+            font-size: 19px;
+            line-height: 1.8;
+            margin: 0 auto 35px;
+            max-width: 780px;
+            color: #ffffff;
         }
+        /* Meta */
         
         .founder-meta {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text);
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
         }
         
         .founder-meta span {
             display: block;
-            margin-top: 4px;
-            font-weight: 600;
-            color: var(--muted);
-        }
-        /* Right side proof panel */
-        
-        .founder-proof {
-            padding: 30px;
-            border-radius: 16px;
-            background: linear-gradient( 135deg, rgba(0, 113, 216, 0.10), rgba(44, 193, 255, 0.08));
-            border: 1px solid var(--border);
-            text-align: center;
-        }
-        
-        .proof-badge {
-            font-size: 14px;
-            font-weight: 900;
-            letter-spacing: .08em;
-            text-transform: uppercase;
-            color: var(--primary);
-        }
-        
-        .proof-sub {
-            margin-top: 10px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--muted);
+            margin-top: 6px;
+            font-weight: 500;
+            opacity: 0.9;
+            color: #ffffff;
         }
         /* Responsive */
         
         @media (max-width: 900px) {
             .founder-wrap {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                padding: 30px;
+                padding: 70px 30px;
             }
-            .founder-proof {
-                text-align: left;
+            .founder-heading {
+                font-size: 28px;
+            }
+            .founder-statement {
+                font-size: 16px;
             }
         }
-        /* =========================================================
+        /* Responsive */
+        
+        @media (max-width: 900px) {
+            .founder-authority {
+                padding: 80px 30px;
+            }
+            .founder-heading {
+                font-size: 30px;
+            }
+            .founder-statement {
+                font-size: 17px;
+            }
+        }
+        /*========================================
        RESPONSIVE
        ========================================================= */
         
@@ -1909,6 +1836,93 @@
                 animation: none !important;
                 transition: none !important;
                 scroll-behavior: auto !important;
+            }
+        }
+        /* =========================================
+   FOUNDER PLEDGE – FIXED VERSION
+========================================= */
+        
+        .founder-pledge {
+            padding: 100px 0;
+            background: transparent;
+        }
+        
+        .pledge-inner {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 90px 60px;
+            border-radius: 32px;
+            overflow: hidden;
+            text-align: center;
+            background-image: linear-gradient(rgba(18, 56, 150, 0.65), rgba(18, 56, 150, 0.75)), url("Ken2.jpg");
+            background-size: cover;
+            background-position: center 15%;
+            background-repeat: no-repeat;
+            color: #ffffff;
+        }
+        /* Name */
+        
+        .pledge-name {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        /* Eyebrow */
+        
+        .founder-eyebrow {
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            color: #ffffff;
+        }
+        /* Title */
+        
+        .pledge-title {
+            margin: 0 0 24px;
+            font-size: clamp(32px, 3vw, 42px);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+        }
+        /* Quote */
+        
+        .pledge-text {
+            font-size: 19px;
+            line-height: 1.8;
+            margin: 0 auto 35px;
+            max-width: 780px;
+            color: #ffffff;
+        }
+        /* Meta */
+        
+        .founder-meta {
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+        
+        .founder-meta span {
+            display: block;
+            margin-top: 6px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        /* Responsive */
+        
+        @media (max-width: 900px) {
+            .pledge-inner {
+                padding: 70px 30px;
+            }
+            .pledge-title {
+                font-size: 28px;
+            }
+            .pledge-text {
+                font-size: 16px;
             }
         }
     </style>
@@ -2043,97 +2057,61 @@
                             </div>
 
                             <div class="form-actions">
-                                <button class="btn btn-accent primary-submit" type="submit" id="submitBtn">
-                  Get My Free Strategy Call
-                  <span aria-hidden="true">→</span>
-                </button>
 
-                                <div class="field" style="margin-top:10px;">
+                                <!-- Consent Checkbox (Now ABOVE button) -->
+                                <div class="field" style="margin-bottom:12px;">
                                     <label style="display:flex; align-items:flex-start; gap:10px; font-size:12px; font-weight:600; cursor:pointer;">
-        <input type="checkbox" id="consent" required style="margin-top:3px;">
-        <span>
-            I agree to be contacted by phone, SMS, and email regarding my request. I understand my information will remain confidential.
-        </span>
-    </label>
+            <input type="checkbox" id="consent" required style="margin-top:3px;">
+            <span>
+                I agree to be contacted by phone, SMS, and email regarding my request. I understand my information will remain confidential.
+            </span>
+        </label>
                                 </div>
 
+                                <!-- Submit Button -->
+                                <button class="btn btn-accent primary-submit" type="submit" id="submitBtn">
+        Get My Free Strategy Call
+        <span aria-hidden="true">→</span>
+    </button>
+
+                                <!-- Confidential Microcopy -->
                                 <div class="microcopy">
                                     Your information is strictly confidential. By submitting, you agree we may contact you by phone/SMS/email about your request. Message/data rates may apply. You can opt out anytime.
                                     <a href="#privacy">Privacy</a>.
                                 </div>
 
-                                <div class="trust-inline" aria-label="Trust badges">
-                                    <div class="badge">
-                                        <div class="icon" aria-hidden="true">
-                                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M12 2l8 4v6c0 5-3 9-8 10C7 21 4 17 4 12V6l8-4z" stroke="currentColor"
-                          stroke-width="2" />
-                      </svg>
-                                        </div>
-                                        BBB Accredited
-                                        <small>Trust signal</small>
-                                    </div>
-
-                                    <div class="badge">
-                                        <div class="icon" aria-hidden="true">
-                                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M4 12a8 8 0 1016 0 8 8 0 10-16 0z" stroke="currentColor" stroke-width="2" />
-                        <path d="M7 12h10" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                        <path d="M12 7v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                      </svg>
-                                        </div>
-                                        U.S.-Based Team
-                                        <small>Mon–Fri</small>
-                                    </div>
-
-                                    <div class="badge">
-                                        <div class="icon" aria-hidden="true">
-                                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M20 7L10 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                          stroke-linejoin="round" />
-                      </svg>
-                                        </div>
-                                        100% Confidential
-                                        <small>NDA available</small>
-                                    </div>
-                                </div>
                             </div>
-                        </form>
-                    </aside>
                 </div>
+            </div>
+            </form>
+            </aside>
+            </div>
             </div>
         </section>
 
-        <section class="founder-authority">
+        <section class="founder-pledge">
             <div class="container">
-                <div class="founder-wrap reveal">
+                <div class="pledge-inner reveal">
 
-                    <div class="founder-content">
-                        <div class="founder-eyebrow">
-                            Founder Commitment
-                        </div>
+                    <span class="pledge-name">
+                Ken Wisnefski
+            </span>
 
-                        <h3 class="founder-heading">
-                            Strategy backed by direct founder accountability.
-                        </h3>
-
-                        <p class="founder-statement">
-                            “I will always make myself available to you. To facilitate this, I provide all clients with my personal cell phone number.”
-                        </p>
-
-                        <div class="founder-meta">
-                            <strong>Ken Wisnefski</strong>
-                            <span>Founder • Est. 2008 • 10,000+ Clients Served</span>
-                        </div>
+                    <div class="founder-eyebrow">
+                        Founder Commitment
                     </div>
 
-                    <div class="founder-proof">
-                        <div class="proof-badge">
-                            Founder-Backed
-                        </div>
-                        <div class="proof-sub">
-                            Direct executive access
-                        </div>
+                    <h2 class="pledge-title">
+                        Strategy backed by direct founder accountability.
+                    </h2>
+
+                    <p class="pledge-text">
+                        “I will always make myself available to you. To facilitate this, I provide all clients with my personal cell phone number.”
+                    </p>
+
+                    <div class="founder-meta">
+                        <strong>Ken Wisnefski</strong>
+                        <span>Founder • Est. 2008 • 10,000+ Clients Served</span>
                     </div>
 
                 </div>
@@ -2341,143 +2319,145 @@
             <div class="container">
                 <div class="section-head reveal">
                     <span class="kicker">Video testimonials</span>
-                    <h2>Proof you can see (videos coming soon)</h2>
+                    <h2>Proof you can see</h2>
                     <p>For now these are placeholders. Later, replace each card with your embedded video.</p>
                 </div>
 
                 <div class="video-grid">
-                    <div class="video reveal" role="group" aria-label="Video testimonial placeholder 1">
-                        <div class="play" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M9 7l10 5-10 5V7z" fill="white" />
-              </svg>
+
+                    <!-- Video 1 -->
+                    <div class="video-card" data-video="https://lp.webimax.com/hubfs/Rep%20Man%20Testimonial%20-%20Jonny%20Fairplay.mp4" data-poster="https://lp.webimax.com/hs-fs/hubfs/video-poster-fairplay01.jpg?width=1920&name=video-poster-fairplay01.jpg">
+
+                        <img src="https://lp.webimax.com/hs-fs/hubfs/video-poster-fairplay01.jpg?width=720" alt="Jonny Fairplay Testimonial">
+
+                        <div class="play-btn">
+                            <div class="play-circle">
+                                ▶
+                            </div>
                         </div>
-                        <div>
-                            <div class="label">Client Story #1</div>
-                            <p class="sub">Placeholder for a short client video about results and experience.</p>
-                            <div class="note"><span class="pulse"></span> Add video embed later</div>
-                        </div>
+
                     </div>
 
-                    <div class="video reveal" role="group" aria-label="Video testimonial placeholder 2">
-                        <div class="play" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M9 7l10 5-10 5V7z" fill="white" />
-              </svg>
+
+                    <!-- Video 2 -->
+                    <div class="video-card" data-video="https://lp.webimax.com/hubfs/Marketing%20Testimonial%20-%20Giadzy.mp4" data-poster="https://lp.webimax.com/hs-fs/hubfs/poster-giadzy02-2.jpg?width=1920&name=poster-giadzy02-2.jpg">
+
+                        <img src="https://lp.webimax.com/hs-fs/hubfs/poster-giadzy02-2.jpg?width=720" alt="Giadzy Testimonial">
+
+                        <div class="play-btn">
+                            <div class="play-circle">
+                                ▶
+                            </div>
                         </div>
-                        <div>
-                            <div class="label">Client Story #2</div>
-                            <p class="sub">Placeholder for a short testimonial covering speed, clarity, and trust.</p>
-                            <div class="note"><span class="pulse"></span> Add video embed later</div>
-                        </div>
+
                     </div>
 
-                    <div class="video reveal" role="group" aria-label="Video testimonial placeholder 3">
-                        <div class="play" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M9 7l10 5-10 5V7z" fill="white" />
-              </svg>
-                        </div>
-                        <div>
-                            <div class="label">Client Story #3</div>
-                            <p class="sub">Placeholder for a short video about protecting brand presence long-term.</p>
-                            <div class="note"><span class="pulse"></span> Add video embed later</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- FAQ -->
-        <section>
-            <div class="container">
-                <div class="section-head reveal">
-                    <span class="kicker">FAQ</span>
-                    <h2>Quick answers before you reach out</h2>
-                    <p>This reduces objections and improves conversion rates from cold ad traffic.</p>
+                    <!-- Video 3 -->
+                    <div class="video-card" data-video="https://lp.webimax.com/hubfs/Marketing%20Testimonial%20-%20Alex%20Boylan.mp4" data-poster="https://lp.webimax.com/hs-fs/hubfs/poster-boylan01-2.jpg?width=1920&name=poster-boylan01-2.jpg">
+
+                        <img src="https://lp.webimax.com/hs-fs/hubfs/poster-boylan01-2.jpg?width=720" alt="Alex Boylan Testimonial">
+
+                        <div class="play-btn">
+                            <div class="play-circle">
+                                ▶
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div class="faq" id="faq">
-                    <details class="reveal">
-                        <summary>How fast does reputation work show results? <span class="chev" aria-hidden="true">
+                <!-- FAQ -->
+                <section>
+                    <div class="container">
+                        <div class="section-head reveal">
+                            <span class="kicker">FAQ</span>
+                            <h2>Quick answers before you reach out</h2>
+                            <p>This reduces objections and improves conversion rates from cold ad traffic.</p>
+                        </div>
+
+                        <div class="faq" id="faq">
+                            <details class="reveal">
+                                <summary>How fast does reputation work show results? <span class="chev" aria-hidden="true">
   <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
     <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5"
       stroke-linecap="round" stroke-linejoin="round"></path>
   </svg>
 </span></summary>
-                        <p>Timelines vary based on your search results and review profiles, but we typically start with quick wins first, then build momentum with content and ongoing monitoring.</p>
-                    </details>
+                                <p>Timelines vary based on your search results and review profiles, but we typically start with quick wins first, then build momentum with content and ongoing monitoring.</p>
+                            </details>
 
-                    <details class="reveal">
-                        <summary>Do you remove reviews? <span class="chev" aria-hidden="true">
+                            <details class="reveal">
+                                <summary>Do you remove reviews? <span class="chev" aria-hidden="true">
   <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
     <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5"
       stroke-linecap="round" stroke-linejoin="round"></path>
   </svg>
 </span></summary>
-                        <p>We focus on compliant, ethical strategies. If a review violates platform policies, we can guide you through the dispute process. Otherwise, we improve what ranks and what prospects see first.</p>
-                    </details>
+                                <p>We focus on compliant, ethical strategies. If a review violates platform policies, we can guide you through the dispute process. Otherwise, we improve what ranks and what prospects see first.</p>
+                            </details>
 
-                    <details class="reveal">
-                        <summary>What does the free strategy call include? <span class="chev" aria-hidden="true">
+                            <details class="reveal">
+                                <summary>What does the free strategy call include? <span class="chev" aria-hidden="true">
   <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
     <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5"
       stroke-linecap="round" stroke-linejoin="round"></path>
   </svg>
 </span></summary>
-                        <p>You’ll get a clear 90-day action plan outline, prioritized steps, and recommendations tailored to your brand presence and goals.</p>
-                    </details>
+                                <p>You’ll get a clear 90-day action plan outline, prioritized steps, and recommendations tailored to your brand presence and goals.</p>
+                            </details>
 
-                    <details class="reveal">
-                        <summary>How is pricing structured? <span class="chev" aria-hidden="true">
+                            <details class="reveal">
+                                <summary>How is pricing structured? <span class="chev" aria-hidden="true">
   <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
     <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5"
       stroke-linecap="round" stroke-linejoin="round"></path>
   </svg>
 </span></summary>
-                        <p>Pricing depends on scope and urgency. After reviewing your situation, we’ll recommend the right level of support and outline options clearly.</p>
-                    </details>
+                                <p>Pricing depends on scope and urgency. After reviewing your situation, we’ll recommend the right level of support and outline options clearly.</p>
+                            </details>
 
-                    <details class="reveal">
-                        <summary>Is this confidential? <span class="chev" aria-hidden="true">
+                            <details class="reveal">
+                                <summary>Is this confidential? <span class="chev" aria-hidden="true">
   <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
     <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5"
       stroke-linecap="round" stroke-linejoin="round"></path>
   </svg>
 </span></summary>
-                        <p>Yes. All engagements are handled confidentially. We regularly work under NDA and operate with strict discretion. We never publish or disclose client details without explicit permission.</p>
-                    </details>
+                                <p>Yes. All engagements are handled confidentially. We regularly work under NDA and operate with strict discretion. We never publish or disclose client details without explicit permission.</p>
+                            </details>
 
-                    <details class="reveal">
-                        <summary>Can I just call instead of filling the form? <span class="chev" aria-hidden="true">
+                            <details class="reveal">
+                                <summary>Can I just call instead of filling the form? <span class="chev" aria-hidden="true">
   <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
     <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.5"
       stroke-linecap="round" stroke-linejoin="round"></path>
   </svg>
 </span></summary>
-                        <p>Absolutely. Tap to call anytime during business hours. If you leave a voicemail, we’ll get back to you within 1 business day.</p>
-                    </details>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final CTA band -->
-        <section class="cta-band compact">
-            <div class="container">
-                <div class="cta-wrap">
-                    <div class="reveal">
-                        <h3>Ready for a clean, confidential reputation strategy?</h3>
-                        <p>
-                            Request your confidential strategy call and we’ll outline discreet, actionable next steps tailored to your situation.
-                        </p>
+                                <p>Absolutely. Tap to call anytime during business hours. If you leave a voicemail, we’ll get back to you within 1 business day.</p>
+                            </details>
+                        </div>
                     </div>
-                    <div class="cta-actions reveal">
-                        <a class="btn btn-accent magnetic" href="#lead-form">Get Free Strategy Call</a>
-                        <a class="btn btn-ghost magnetic" href="tel:+18568306359">Call 856-830-6359</a>
+                </section>
+
+                <!-- Final CTA band -->
+                <section class="cta-band compact">
+                    <div class="container">
+                        <div class="cta-wrap">
+                            <div class="reveal">
+                                <h3>Ready for a clean, confidential reputation strategy?</h3>
+                                <p>
+                                    Request your confidential strategy call and we’ll outline discreet, actionable next steps tailored to your situation.
+                                </p>
+                            </div>
+                            <div class="cta-actions reveal">
+                                <a class="btn btn-accent magnetic" href="#lead-form">Get Free Strategy Call</a>
+                                <a class="btn btn-ghost magnetic" href="tel:+18568306359">Call 856-830-6359</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                </section>
     </main>
 
     <footer class="site-footer" id="privacy">
@@ -2513,6 +2493,8 @@
 
         </div>
     </footer>
+
+
 
     <!-- Mobile sticky CTA bar -->
     <div class="mobile-bar" role="region" aria-label="Quick actions">
@@ -2700,6 +2682,61 @@
             el.addEventListener('mouseleave', () => {
                 el.style.transform = '';
             });
+        });
+    </script>
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <button class="close-modal" id="closeModal">✕</button>
+            <video id="modalVideo" controls playsinline></video>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            const cards = document.querySelectorAll(".video-card");
+            const modal = document.getElementById("videoModal");
+            const modalVideo = document.getElementById("modalVideo");
+            const closeBtn = document.getElementById("closeModal");
+
+            // Open modal
+            cards.forEach(card => {
+                card.addEventListener("click", function() {
+                    const videoSrc = this.getAttribute("data-video");
+                    modalVideo.src = videoSrc;
+                    modal.classList.add("active");
+                    document.body.style.overflow = "hidden"; // prevent scroll
+                    modalVideo.play();
+                });
+            });
+
+            // Close modal function
+            function closeModal() {
+                modal.classList.remove("active");
+                modalVideo.pause();
+                modalVideo.src = "";
+                document.body.style.overflow = "";
+            }
+
+            // Close button click
+            closeBtn.addEventListener("click", function(e) {
+                e.stopPropagation();
+                closeModal();
+            });
+
+            // Click outside video closes
+            modal.addEventListener("click", function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // ESC key closes
+            document.addEventListener("keydown", function(e) {
+                if (e.key === "Escape") {
+                    closeModal();
+                }
+            });
+
         });
     </script>
 </body>
